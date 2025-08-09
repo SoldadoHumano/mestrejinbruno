@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="logo.png" href="logo.png">
+    <title>MestreJinBruno</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
+
+        body {
+            background-image: url('2.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            position: relative;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body::before {
+            content: '';
+            position: fixed; 
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+        }
+        
+        .typing-container {
+            min-height: 2.5rem;
+        }
+        
+        .typing-text {
+            border-right: 2px solid white;
+            animation: blinkCursor 0.7s infinite;
+        }
+        
+        @keyframes blinkCursor {
+            from { border-right-color: white; }
+            to { border-right-color: transparent; }
+        }
+        
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .platform-card {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .section-container {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .particle-title {
+            position: relative; 
+            display: inline-block;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleUp 1s ease-out forwards;
+        }
+
+        @keyframes particleUp {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--x), var(--y)) scale(0.5);
+            }
+        }
+
+        .day-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .sponsor-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            height: 100px;
+            display: flex;
+            text-decoration: none;
+            color: inherit;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .sponsor-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+        }
+        
+        .sponsor-img {
+            max-height: 60px;
+            max-width: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+        }
+    </style>
+</head>
+<body>
+    <nav class="glass-effect container mx-auto px-6 py-4 rounded-xl mt-4">
+        <div class="flex justify-between items-center">
+            <div class="text-2xl font-bold flex items-center">
+                <img src="mestre.gif" alt="Logo" class="h-8 mr-2" />
+                <span>MestreJinBruno</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link">Início</a>
+                <a href="#streams" class="nav-link">Transmissões</a>
+                <a href="#schedule" class="nav-link">Agenda</a>
+                <a href="#links" class="nav-link">Links</a>
+                <a href="setup.html" class="nav-link font-bold text-purple-300">Meu Setup</a>
+            </div>
+            <button class="md:hidden focus:outline-none" id="menu-toggle">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <div class="md:hidden hidden flex flex-col space-y-4 mt-4 glass-effect rounded-lg p-4" id="mobile-menu">
+            <a href="#home" class="nav-link">Início</a>
+            <a href="#streams" class="nav-link">Transmissões</a>
+            <a href="#schedule" class="nav-link">Agenda</a>
+            <a href="#links" class="nav-link">Links</a>
+            <a href="setup.html" class="nav-link font-bold text-purple-300">Meu Setup</a>
+        </div>
+    </nav>
+
+    <section id="home" class="container mx-auto px-9 py-20 text-center">
+        <div class="glass-effect max-w-4xl mx-auto p-8 rounded-2xl">
+            <h1 class="text-4xl md:text-6xl font-bold mb-5">Seja muito bem-vindo(a)!</h1>
+            <div class="typing-container flex justify-center items-center mb-8">
+                <h2 class="text-xl md:text-3xl font-medium" id="typing-text"></h2>
+            </div>
+            <div class="flex justify-center space-x-4">
+                <a href="#streams" class="bg-white text-purple-600 px-6 py-3 rounded-full font-semibold hover:bg-purple-100 transition duration-300">Assistir Agora</a>
+                <a href="#schedule" class="border-2 border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition duration-300">Ver Agenda</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="streams" class="container mx-auto px-6 py-8">
+        <div class="section-container">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Onde Transmito</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="platform-card glass-effect rounded-xl p-8 text-center">
+                    <div class="text-5xl mb-4 text-purple-400 floating">
+                        <i class="fab fa-twitch"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Twitch</h3>
+                    <p class="mb-6">Junte-se a mim para jogos ao vivo, sessões de Q&A e encontros da comunidade na Twitch!</p>
+                    <a href="https://twitch.tv/mestrejinbruno" target="_blank" class="bg-purple-600 px-6 py-2 rounded-full font-medium hover:bg-purple-700 transition duration-300">Assistir na Twitch</a>
+                </div>
+                
+                <div class="platform-card glass-effect rounded-xl p-8 text-center">
+                    <div class="text-5xl mb-4 text-green-400 floating">
+                        <i class="fa-brands fa-kickstarter"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Kick</h3>
+                    <p class="mb-6">Plataforma nova com conteúdo fresco e transmissões interativas. Venha conferir!</p>
+                    <a href="https://kick.com/mestrejinbruno" target="_blank" class="bg-green-600 px-6 py-2 rounded-full font-medium hover:bg-green-700 transition duration-300">Assistir na Kick</a>
+                </div>
+                
+                <div class="platform-card glass-effect rounded-xl p-8 text-center">
+                    <div class="text-5xl mb-4 text-red-400 floating">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">YouTube</h3>
+                    <p class="mb-6">Transmissões ao vivo, vídeos e destaques disponíveis no meu canal do YouTube.</p>
+                    <a href="https://www.youtube.com/@MestreJinBruno?sub_confirmation=1" target="_blank" class="bg-red-600 px-6 py-2 rounded-full font-medium hover:bg-red-700 transition duration-300">Assistir no YouTube</a>
+                </div>
+
+                <div class="platform-card glass-effect rounded-xl p-8 text-center md:col-span-3 md:mx-auto max-w-md">
+                    <div class="text-5xl mb-4 text-red-400 floating">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">YouTube - BallonFut</h3>
+                    <p class="mb-6">Canal extra com vídeos exclusivos de futebol.</p>
+                    <a href="https://www.youtube.com/@BallonFut?sub_confirmation=1" target="_blank"
+                    class="bg-red-600 px-6 py-2 rounded-full font-medium hover:bg-red-700 transition duration-300">
+                    Assistir no YouTube
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule" class="container mx-auto px-6 py-8">
+        <div class="section-container">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Agenda de Transmissões</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass-effect p-6 rounded-xl">
+                        <h3 class="day-title text-xl font-bold mb-4 text-center text-purple-300" data-color=#c084fc>Segunda Feira</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-purple-300 rounded-full mr-2"></span>
+                                <span>15:00 - 17:00</span>
+                            </li>
+                            <li class="text-sm opacity-80">Edição de Vídeo</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-effect p-6 rounded-xl">
+                        <h3 class="day-title text-xl font-bold mb-4 text-center text-green-300" data-color=#86efac>Terça Feira</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-green-300 rounded-full mr-2"></span>
+                                <span>15:00 - 17:00</span>
+                            </li>
+                            <li class="text-sm opacity-80">Edição de Vídeo</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-effect p-6 rounded-xl">
+                        <h3 class="day-title text-xl font-bold mb-4 text-center text-red-600" data-color=#dc2626>Quarta Feira</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
+                                <span>15:00 - 17:00</span>
+                            </li>
+                            <li class="text-sm opacity-80">Jogando com os Viewers</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-effect p-6 rounded-xl">
+                        <h3 class="day-title text-xl font-bold mb-4 text-center text-yellow-300" data-color=#fde047>Quinta Feira</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-yellow-300 rounded-full mr-2"></span>
+                                <span>15:00 - 17:00</span>
+                            </li>
+                            <li class="text-sm opacity-80">Jogando com os Viewers</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="glass-effect p-6 rounded-xl">
+                        <h3 class="day-title text-xl font-bold mb-4 text-center text-blue-300" data-color=#93c5fd>Sexta Feira</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-blue-300 rounded-full mr-2"></span>
+                                <span>15:00 - 17:00</span>
+                            </li>
+                            <li class="text-sm opacity-80">Jogando com os Viewers</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="glass-effect p-6 rounded-xl">
+                        <h3 class="day-title text-xl font-bold mb-4 text-center text-orange-500" data-color=#f97316>Sábado</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+                                <span>15:00 - 17:00</span>
+                            </li>
+                            <li class="text-sm opacity-80">Variados</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="glass-effect p-6 rounded-xl mt-5">
+                    <h3 class="day-title text-xl font-bold mb-4 text-center text-white" data-color=#ffffff>Domingo</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <span class="w-2 h-2 bg-white rounded-full mr-2"></span>
+                            <span>00:00 - 00:00</span>
+                        </li>
+                        <li class="text-sm opacity-80">Dia de dormir</li>
+                    </ul>
+                </div>
+                
+                <div class="mt-8 text-center glass-effect rounded-lg py-4 px-6 max-w-sm mx-auto shadow-md">
+                    <p class="mb-1 text-sm italic text-gray-200">Todos os horários estão no horário de Brasília (GMT-3)</p>
+                    <div class="flex items-center justify-center space-x-2 text-purple-400 font-semibold text-xl">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2" />
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
+                        </svg>
+                        <span id="brasil-time"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="links" class="container mx-auto px-6 py-8">
+        <div class="section-container">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Conecte-se Comigo</h2>
+            <div class="max-w-2xl mx-auto glass-effect rounded-xl p-8">
+                <div class="flex justify-center flex-wrap gap-6 mb-8">
+                    <a href="https://x.com/MestreJinBruno" class="social-icon text-3xl text-blue-400 hover:text-blue-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://chat.whatsapp.com/EwJrX2rp1fq39hlKcbztuN?mode=ac_t" class="social-icon text-3xl text-green-400 hover:text-green-400">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.instagram.com/mestrejinbrunoficial/" class="social-icon text-3xl text-pink-500 hover:text-pink-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/jose.bruno.790/" class="social-icon text-3xl text-blue-600 hover:text-blue-500">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://discord.gg/guy7HVmNp8" class="social-icon text-3xl text-blue-500 hover:text-blue-600">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@mestrejinbruno" class="social-icon text-3xl text-black hover:text-gray-700">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://steamcommunity.com/id/Jinbruno/" class="social-icon text-3xl text-white-100 hover:text-blue-200">
+                        <i class="fab fa-steam"></i>
+                    </a>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center glass-effect p-3 rounded-lg">
+                        <i class="fas fa-envelope text-xl mr-4 text-yellow-400"></i>
+                        <span>josebruno189@live.com</span>
+                    </div>
+                    <div class="flex items-center glass-effect p-3 rounded-lg">
+                        <i class="fas fa-globe text-xl mr-4 text-green-400"></i>
+                        <span>www.mestrejinbruno.com</span>
+                    </div>
+                    <div class="flex items-center glass-effect p-3 rounded-lg">
+                        <i class="fas fa-heart text-xl mr-4 text-red-400"></i>
+                        <span>Apoie-me via 
+                            <a href="https://livepix.gg/mestrejinbruno" target="_blank" rel="noopener noreferrer" class="hover:underline text-red-400">
+                                LivePix
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="sponsors" class="container mx-auto px-6 py-8">
+    <div class="section-container">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Nossos Patrocinadores</h2>
+        <p class="text-center text-gray-300 max-w-2xl mx-auto mb-10">
+            Um enorme obrigado aos nossos incríveis patrocinadores que apoiam este canal e tornam possível a criação de conteúdo!
+        </p>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <a href="https://streamer.livad.stream/?referrer=866002757" target="_blank" class="sponsor-card">
+                <img src="Sponsor/livad.png" alt="livad" class="sponsor-img">
+            </a>
+            
+            <a href="https://www.kaspersky.com.br/lp/special-offer-for-gamers?reseller=br_ecinflu-br_acq_ona_influ__onl_b2c_twitch_lnk_in-mestr_______f94257625ed0ba22" target="_blank" class="sponsor-card">
+                <img src="Sponsor/kp.png" alt="Kaspersky" class="sponsor-img">
+            </a>
+            
+            <a href="https://app.willbank.com.br/3u0P/pcyoqind" target="_blank" class="sponsor-card">
+                <img src="Sponsor/willbank.png" alt="WillBank" class="sponsor-img">
+            </a>
+            
+            <a href="https://www.snowdog.tec.br/" target="_blank" class="sponsor-card">
+                <img src="Sponsor/snowdog.png" alt="SnowDog" class="sponsor-img">
+            </a>
+            
+            <a href="https://www.mercadolivre.com.br/social/mestrejinbruno?matt_word=mestrejinbruno&matt_tool=72646271&forceInApp=true&ref=BMUGHZNus%2BMqjG2yKp4ZY6Mic02u2lAgtef9jS58UHDdYcIIhNDFGyPaO7SR22UAWo%2BxXjMB3iEeeHB%2F5gFcA8c9xsvOa2nkhm63HAY5TwoU4Tab75IRPDhiYQj2cmhkOK7nRT8t4W9%2Boievt2kKAU69Cf4M1o4jSRL9AW29qWxf6aCpurEgYMVKZp7BaTB%2Bu0tIKos%3D" target="_blank" class="sponsor-card">
+                <img src="Sponsor/mlivre.png" alt="Mercado Livre" class="sponsor-img">
+            </a>
+
+            <a href="https://app.husky.io/onboarding/profile-type?ref=bc1c2ea5-b23f-429b-8b41-fc6e1b326ffd" target="_blank" class="sponsor-card">
+                <img src="Sponsor/creators.png" alt="Creators" class="sponsor-img">
+            </a>
+
+            <a href="https://www.exitlag.com/refer/10074679" target="_blank" class="sponsor-card">
+                <img src="Sponsor/exitlag.png" alt="ExitLag" class="sponsor-img">
+            </a>
+
+            <a href="https://www.twitch.tv/team/juventusesports" target="_blank" class="sponsor-card">
+                <img src="Sponsor/juventus.png" alt="juventus" class="sponsor-img">
+            </a>
+        </div>
+        
+        <div class="mt-10 text-center">
+            <p class="text-gray-400 italic">
+                Quer se tornar um patrocinador? Entre em contato: josebruno189@live.com
+            </p>
+        </div>
+    </div>
+</section>
+    
+    <footer class="glass-effect py-9 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <p>© 2025 MestreJinBruno. Todos os direitos reservados.</p>
+            <p class="text-sm mt-1 opacity-70">
+                Website developed by
+                <a href="https://github.com/SoldadoHumano"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:underline text-purple-400 particle-title"
+                data-color="#c084fc">
+                Vitor
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        const phrases = [
+            "Jogos ao vivo todos os dias!",
+            "Transmissões interativas com viewers",
+            "Junte-se à nossa comunidade incrível",
+            "Novo conteúdo em cada transmissão",
+            "Vamos nos divertir juntos!"
+        ];
+        
+        let currentPhrase = 0;
+        let currentLetter = 0;
+        let isDeleting = false;
+        let typingSpeed = 50;
+        
+        function typeWriter() {
+            const typingText = document.getElementById('typing-text');
+            if (isDeleting) {
+                typingText.textContent = phrases[currentPhrase].substring(0, currentLetter - 1);
+                currentLetter--;
+                typingSpeed = 70;
+            } else {
+                typingText.textContent = phrases[currentPhrase].substring(0, currentLetter + 1);
+                currentLetter++;
+                typingSpeed = 70;
+            }
+            if (!isDeleting && typingText.textContent === phrases[currentPhrase]) {
+                typingSpeed = 2000;
+                isDeleting = true;
+                typingText.classList.add('typing-complete');
+            } else if (isDeleting && typingText.textContent === '') {
+                isDeleting = false;
+                currentPhrase = (currentPhrase + 1) % phrases.length;
+                typingSpeed = 500;
+                typingText.classList.remove('typing-complete');
+            }
+            
+            setTimeout(typeWriter, typingSpeed);
+        }
+
+        function updateBrazilTime() {
+            const now = new Date();
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+
+            const brasilOffset = -3;
+
+            const brasilDate = new Date(utc + (3600000 * brasilOffset));
+
+            const hours = String(brasilDate.getHours()).padStart(2, '0');
+            const minutes = String(brasilDate.getMinutes()).padStart(2, '0');
+            const seconds = String(brasilDate.getSeconds()).padStart(2, '0');
+
+            document.getElementById('brasil-time').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        setInterval(updateBrazilTime, 1000);
+        updateBrazilTime();
+        
+        document.querySelectorAll('.day-title').forEach(title => {
+            setInterval(() => {
+                const rect = title.getBoundingClientRect();
+                const particle = document.createElement('span');
+                particle.className = 'particle';
+                particle.style.background = title.dataset.color;
+
+                particle.style.left = (Math.random() * rect.width) + 'px';
+                particle.style.top = (Math.random() * rect.height) + 'px';
+
+                particle.style.setProperty('--x', (Math.random() - 0.5) * 50 + 'px');
+                particle.style.setProperty('--y', - (Math.random() * 50 + 20) + 'px');
+
+                title.appendChild(particle);
+                setTimeout(() => particle.remove(), 1000);
+            }, 150);
+        });
+
+        document.querySelectorAll('.particle-title').forEach(el => {
+            setInterval(() => {
+                const particle = document.createElement('span');
+                particle.className = 'particle';
+                particle.style.background = el.dataset.color;
+
+                particle.style.left = Math.random() * el.offsetWidth + 'px';
+                particle.style.top = Math.random() * el.offsetHeight + 'px';
+
+                particle.style.setProperty('--x', (Math.random() - 0.5) * 40 + 'px');
+                particle.style.setProperty('--y', - (Math.random() * 40 + 20) + 'px');
+
+                el.appendChild(particle);
+                setTimeout(() => particle.remove(), 1000);
+            }, 200);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(typeWriter, 1000);
+        });
+    </script>
+</body>
+</html>

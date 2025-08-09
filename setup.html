@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="logo.png" href="logo.png">
+    <title>MestreJinBruno</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
+
+        body {
+            background-image: url('2.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            position: relative;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body::before {
+            content: '';
+            position: fixed; 
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+        }
+
+        .setup-tab {
+            transition: all 0.3s ease;
+        }
+
+        .setup-tab:hover {
+            transform: translateY(-3px);
+        }
+
+        .setup-tab.active {
+            background: rgba(124, 58, 237, 0.2);
+            border-bottom: 2px solid rgba(124, 58, 237, 0.8);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+                .particle-title {
+            position: relative; 
+            display: inline-block;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleUp 1s ease-out forwards;
+        }
+
+        @keyframes particleUp {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--x), var(--y)) scale(0.5);
+            }
+        }
+
+        .day-title {
+            position: relative;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="glass-effect container mx-auto px-6 py-4 rounded-xl mt-4">
+            <div class="flex justify-between items-center">
+            <div class="text-2xl font-bold flex items-center">
+                <img src="mestre.gif" alt="Logo" class="h-8 mr-2" />
+                <span>MestreJinBruno</span>
+            </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link">Início</a>
+                    <a href="index.html#streams" class="nav-link">Transmissões</a>
+                    <a href="index.html#schedule" class="nav-link">Agenda</a>
+                    <a href="index.html#links" class="nav-link">Links</a>
+                    <a href="setup.html" class="nav-link font-bold text-purple-300">Meu Setup</a>
+                </div>
+                <button class="md:hidden focus:outline-none" id="menu-toggle">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <div class="md:hidden hidden flex flex-col space-y-4 mt-4 glass-effect rounded-lg p-4" id="mobile-menu">
+                <a href="index.html" class="nav-link">Início</a>
+                <a href="index.html#streams" class="nav-link">Transmissões</a>
+                <a href="index.html#schedule" class="nav-link">Agenda</a>
+                <a href="index.html#links" class="nav-link">Links</a>
+                <a href="setup.html" class="nav-link font-bold text-purple-300">Meu Setup</a>
+            </div>
+    </nav>
+
+    <section class="container mx-auto px-6 py-12">
+        <div class="glass-effect max-w-6xl mx-auto p-8 rounded-2xl">
+            <h1 class="text-4xl md:text-5xl font-bold mb-8 text-center">Configuração Completa</h1>
+            
+            <div class="flex justify-center mb-12 space-x-4">
+                <button id="gaming-tab" class="setup-tab active glass-effect px-6 py-3 rounded-t-lg font-semibold">
+                    <i class="fas fa-gamepad mr-2"></i>PC de Games
+                </button>
+                <button id="streaming-tab" class="setup-tab glass-effect px-6 py-3 rounded-t-lg font-semibold">
+                    <i class="fas fa-broadcast-tower mr-2"></i>PC de Stream
+                </button>
+            </div>
+            
+            <div id="gaming-content" class="setup-content">
+                <h2 class="text-3xl font-bold mb-6 text-purple-300 border-b border-purple-500 pb-2">
+                    <i class="fas fa-desktop mr-2"></i>PC Principal - Jogos
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="glass-effect p-6 rounded-xl">
+                        <h3 class="text-2xl font-bold mb-4 text-blue-300 border-b border-blue-500 pb-2">
+                            <i class="fas fa-microchip mr-2"></i>Hardware
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-microchip mt-1 mr-2 text-blue-400"></i>
+                                <span><strong>Processador:</strong> AMD Ryzen 7 5800X</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-memory mt-1 mr-2 text-blue-400"></i>
+                                <span><strong>Placa de Vídeo:</strong> Aorus RTX 3080 MASTER</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-memory mt-1 mr-2 text-blue-400"></i>
+                                <span><strong>Memória RAM:</strong> XPG Spectrix 32GB (2x16) DDR4 3200MHz</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-hdd mt-1 mr-2 text-blue-400"></i>
+                                <span><strong>Armazenamento:</strong> SSD M.2 480GB, HDD 1TB</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-fan mt-1 mr-2 text-blue-400"></i>
+                                <span><strong>Cooler:</strong> Water Cooler Pichau AQUA V2 240ML</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-bolt mt-1 mr-2 text-blue-400"></i>
+                                <span><strong>Fonte:</strong> Corsair CV 750W</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-box mt-1 mr-2 text-blue-400"></i>
+                                <span><strong>Gabinete:</strong> Gamdias Aura Gc2 Elite</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="glass-effect p-6 rounded-xl">
+                        <h3 class="text-2xl font-bold mb-4 text-green-300 border-b border-green-500 pb-2">
+                            <i class="fas fa-keyboard mr-2"></i>Periféricos
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-keyboard mt-1 mr-2 text-green-400"></i>
+                                <span><strong>Teclado:</strong> Corsair K60 PRO</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-mouse mt-1 mr-2 text-green-400"></i>
+                                <span><strong>Mouse:</strong> Logitech G Pro X Superlight 2</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-headphones mt-1 mr-2 text-green-400"></i>
+                                <span><strong>Headset:</strong> KZ ZS10 PRO X</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-microphone mt-1 mr-2 text-green-400"></i>
+                                <span><strong>Microfone:</strong> Zealsound A68 Profissional Game</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-tv mt-1 mr-2 text-green-400"></i>
+                                <span><strong>Monitor Principal:</strong> AOC LEGEND 27 240Hz</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-tv mt-1 mr-2 text-green-400"></i>
+                                <span><strong>Monitor Secundário:</strong> Samsung Odyssey G3 180Hz</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-chair mt-1 mr-2 text-green-400"></i>
+                                <span><strong>Cadeira:</strong> TGT Heron TX</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <h3 class="text-2xl font-bold mb-6">Visual do Setup de Games</h3>
+                    <div class="glass-effect p-4 rounded-xl inline-block">
+                        <img src="pc1.png" alt="Foto do setup de games" class="rounded-lg max-w-full h-auto">
+                        <p class="mt-2 text-sm italic">* Imagem do PC de jogos</p>
+                    </div> 
+                </div>
+            </div>
+            
+            <div id="streaming-content" class="setup-content hidden">
+                <h2 class="text-3xl font-bold mb-6 text-purple-300 border-b border-purple-500 pb-2">
+                    <i class="fas fa-broadcast-tower mr-2"></i>PC Secundário - Stream
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="glass-effect p-6 rounded-xl">
+                        <h3 class="text-2xl font-bold mb-4 text-blue-300 border-b border-blue-500 pb-2">
+                            <i class="fas fa-microchip mr-2"></i>Hardware
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-microchip mt-1 mr-2 text-blue-400"></i>
+                                <span><strong>Processador:</strong> AMD Ryzen 5 5500</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-memory mt-1 mr-2 text-blue-400"></i>
+                                <span><strong>Placa de Vídeo:</strong> NVIDIA GTX 1660 SUPER</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-memory mt-1 mr-2 text-blue-400"></i>
+                                <span><strong>Memória RAM:</strong> Asgard 16GB (2x8gb) DDR4</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-hdd mt-1 mr-2 text-blue-400"></i>
+                                <span><strong>Armazenamento:</strong> SSD Kingston 500GB</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-network-wired mt-1 mr-2 text-blue-400"></i>
+                                <span><strong>Capturador:</strong> Avermedia GC311</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-box mt-1 mr-2 text-blue-400"></i>
+                                <span><strong>Gabinete:</strong> Rise Mode Galaxy Glass Standard V2</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="glass-effect p-6 rounded-xl">
+                        <h3 class="text-2xl font-bold mb-4 text-red-300 border-b border-red-500 pb-2">
+                            <i class="fas fa-video mr-2"></i>Equipamentos de Stream
+                        </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-microphone mt-1 mr-2 text-red-400"></i>
+                                <span><strong>Microfone:</strong> Zealsound A68</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-lightbulb mt-1 mr-2 text-red-400"></i>
+                                <span><strong>Iluminação:</strong> Ring Light 6"</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-camera mt-1 mr-2 text-red-400"></i>
+                                <span><strong>Webcam:</strong> Logitech C920s PRO HD</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-camera mt-1 mr-2 text-red-400"></i>
+                                <span><strong>Webcam:</strong> Rise Mode 2k</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-phone-alt mt-1 mr-2 text-red-400"></i>
+                                <span><strong>Controle:</strong> Controladora Rise Mode Vision 01</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-mobile-button mt-1 mr-2 text-red-400"></i>
+                                <span><strong>Celular:</strong> Poco X6 Pro 512gb / 12gb RAM</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="glass-effect p-6 rounded-xl mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-yellow-300 border-b border-yellow-500 pb-2">
+                        <i class="fas fa-code mr-2"></i>Software & Configurações
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 text-blue-200">Streaming</h4>
+                            <ul class="space-y-2">
+                                <li><strong>OBS Studio:</strong> Configurações personalizadas</li>
+                                <li><strong>Resolução:</strong> 1080p60</li>
+                                <li><strong>Bitrate:</strong> 6000 Kbps</li>
+                                <li><strong>Encoder:</strong> NVENC (RTX 3080)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 text-blue-200">Áudio</h4>
+                            <ul class="space-y-2">
+                                <li><strong>Voicemeeter Banana:</strong> Mixagem avançada</li>
+                                <li><strong>Equalização:</strong> Preset personalizado</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--  <div class="mt-8 text-center">
+                    <h3 class="text-2xl font-bold mb-6">Visual do Setup de Stream</h3>
+                    <div class="glass-effect p-4 rounded-xl inline-block">
+                        <img src="https://via.placeholder.com/800x450" alt="Foto do setup de stream" class="rounded-lg max-w-full h-auto">
+                        <p class="mt-2 text-sm italic">* Imagem do PC de streaming</p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="glass-effect py-9 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <p>© 2025 MestreJinBruno. Todos os direitos reservados.</p>
+            <p class="text-sm mt-1 opacity-70">
+                Website developed by
+                <a href="https://github.com/SoldadoHumano"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:underline text-purple-400 particle-title"
+                data-color="#c084fc">
+                Vitor
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const gamingTab = document.getElementById('gaming-tab');
+        const streamingTab = document.getElementById('streaming-tab');
+        const gamingContent = document.getElementById('gaming-content');
+        const streamingContent = document.getElementById('streaming-content');
+
+        gamingTab.addEventListener('click', () => {
+            gamingTab.classList.add('active');
+            streamingTab.classList.remove('active');
+            gamingContent.classList.remove('hidden');
+            streamingContent.classList.add('hidden');
+        });
+
+        streamingTab.addEventListener('click', () => {
+            streamingTab.classList.add('active');
+            gamingTab.classList.remove('active');
+            streamingContent.classList.remove('hidden');
+            gamingContent.classList.add('hidden');
+        });
+
+        document.querySelectorAll('.particle-title').forEach(el => {
+            setInterval(() => {
+                const particle = document.createElement('span');
+                particle.className = 'particle';
+                particle.style.background = el.dataset.color;
+
+                particle.style.left = Math.random() * el.offsetWidth + 'px';
+                particle.style.top = Math.random() * el.offsetHeight + 'px';
+
+                particle.style.setProperty('--x', (Math.random() - 0.5) * 40 + 'px');
+                particle.style.setProperty('--y', - (Math.random() * 40 + 20) + 'px');
+
+                el.appendChild(particle);
+                setTimeout(() => particle.remove(), 1000);
+            }, 200);
+        });
+    </script>
+</body>
+</html>
