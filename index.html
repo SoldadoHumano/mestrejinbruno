@@ -1,47 +1,143 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="logo.png" href="logo.png">
     <title>MestreJinBruno</title>
+    <link rel="icon" type="image/png" href="GeneralImages/logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
 
-        html, body {
-            margin: 0;
-            padding: 0;
-            min-height: 100%;
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Teko:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <meta property="og:title" content="MestreJinBruno" />
+    <meta property="og:description"
+        content="Gameplay de alta performance, resenha sem filtro e a comunidade mais leal do cenário. Venha fazer parte dessa comunidade." />
+    <meta property="og:image" content="https://mestrejinbrunoficial.com.br/2.png" />
+    <meta property="og:url" content="https://mestrejinbrunoficial.com.br" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MestreJinBruno" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@MestreJinBruno" />
+    <meta name="twitter:creator" content="@MestreJinBruno" />
+    <meta name="twitter:title" content="MestreJinBruno" />
+    <meta name="twitter:description"
+        content="Gameplay de alta performance, resenha sem filtro e a comunidade mais leal do cenário. Venha fazer parte dessa comunidade." />
+    <meta name="twitter:image" content="https://mestrejinbrunoficial.com.br/2.png" />
+    <style>
+        :root {
+            --primary: #EF4444;
+            --dark: #0a0a0a;
+            --light: #ffffff;
         }
 
         body {
-            background-image: url('2.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            min-height: 100vh;
-            position: relative;
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: #e5e5e5;
+            overflow-x: hidden;
         }
 
-        body::before {
-            content: '';
-            position: fixed; 
+        h1,
+        h2,
+        h3,
+        h4,
+        .nav-item {
+            font-family: 'Teko', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Background Grid */
+        .grid-bg {
+            background-image:
+                linear-gradient(rgba(20, 20, 20, 0.8) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(20, 20, 20, 0.8) 1px, transparent 1px);
+            background-size: 50px 50px;
+            position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: -1;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
         }
 
+        /* Red Glow Effect */
+        .glow-red {
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+            animation: pulse-red 3s infinite;
+        }
+
+        @keyframes pulse-red {
+            0% {
+                box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgba(239, 68, 68, 0.6);
+            }
+
+            100% {
+                box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+            }
+        }
+
+        /* Glitch Text Hover */
+        .glitch-hover:hover {
+            text-shadow: 2px 0 #fff, -2px 0 #EF4444;
+            animation: glitch 0.3s linear;
+        }
+
+        @keyframes glitch {
+            0% {
+                transform: translate(0);
+            }
+
+            20% {
+                transform: translate(-2px, 2px);
+            }
+
+            40% {
+                transform: translate(-2px, -2px);
+            }
+
+            60% {
+                transform: translate(2px, 2px);
+            }
+
+            80% {
+                transform: translate(2px, -2px);
+            }
+
+            100% {
+                transform: translate(0);
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #EF4444;
+            border-radius: 0;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #fff;
+        }
+
+        /* Glass Effect */
         .glass-effect {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(15px);
@@ -49,78 +145,49 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
         }
-        
+
+        /* Typing Animation */
         .typing-container {
             min-height: 2.5rem;
         }
-        
+
         .typing-text {
             border-right: 2px solid white;
             animation: blinkCursor 0.7s infinite;
         }
-        
+
         @keyframes blinkCursor {
-            from { border-right-color: white; }
-            to { border-right-color: transparent; }
-        }
-        
-        .platform-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .platform-card {
-            transition: all 0.3s ease;
-        }
-        
-        .social-icon {
-            transition: all 0.3s ease;
-        }
-        
-        .social-icon:hover {
-            transform: scale(1.2);
-        }
-        
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: white;
-            transition: width 0.3s ease;
+            from {
+                border-right-color: white;
+            }
+
+            to {
+                border-right-color: transparent;
+            }
         }
 
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .section-container {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-
+        /* Floating Animation */
         .floating {
             animation: floating 3s ease-in-out infinite;
         }
 
         @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
+        /* Particle Animation */
         .particle-title {
-            position: relative; 
+            position: relative;
             display: inline-block;
         }
 
@@ -138,355 +205,721 @@
                 opacity: 1;
                 transform: translate(0, 0) scale(1);
             }
+
             100% {
                 opacity: 0;
                 transform: translate(var(--x), var(--y)) scale(0.5);
             }
         }
 
+        /* Tech Box */
+        .tech-box {
+            background: #111;
+            border: 1px solid #333;
+            position: relative;
+        }
+
+        /* Cantos Tech */
+        .tech-box::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 15px;
+            height: 15px;
+            border-top: 3px solid #EF4444;
+            border-left: 3px solid #EF4444;
+        }
+
+        .tech-box::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 15px;
+            height: 15px;
+            border-bottom: 3px solid #EF4444;
+            border-right: 3px solid #EF4444;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background-color: #222;
+            height: 8px;
+            margin-top: 5px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #EF4444;
+            box-shadow: 0 0 10px #EF4444;
+        }
+
+        /* Clip Path Button */
+        .clip-path-btn {
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+        }
+
+        /* Section Container */
+        .section-container {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        /* Day Title */
         .day-title {
             position: relative;
             display: inline-block;
         }
-        
-        .sponsor-card {
-            transition: all 0.3s ease;
-            border-radius: 12px;
-            height: 100px;
-            display: flex;
-            text-decoration: none;
-            color: inherit;
-            justify-content: center;
-            align-items: center;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+
+        /* Mobile Header Fix */
+        @media (max-width: 768px) {
+            .header-logo {
+                font-size: 1.5rem !important;
+                white-space: nowrap;
+            }
+
+            .hero-title {
+                font-size: 5rem !important;
+                line-height: 1 !important;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem !important;
+            }
+
+            .stats-section h3 {
+                font-size: 2.5rem !important;
+            }
+
+            .stats-section p {
+                font-size: 0.8rem !important;
+            }
         }
-        
-        .sponsor-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+
+        /* Animated Clock */
+        .clock-container {
+            position: relative;
+            width: 24px;
+            height: 24px;
         }
-        
-        .sponsor-img {
-            max-height: 60px;
-            max-width: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+
+        .clock-face {
+            width: 100%;
+            height: 100%;
+            border: 2px solid currentColor;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .clock-hand {
+            position: absolute;
+            background-color: currentColor;
+            transform-origin: bottom center;
+            border-radius: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .hour-hand {
+            width: 2px;
+            height: 6px;
+            top: 6px;
+            animation: rotateHour 43200s linear infinite;
+            /* 12 hours */
+        }
+
+        .minute-hand {
+            width: 2px;
+            height: 8px;
+            top: 4px;
+            animation: rotateMinute 3600s linear infinite;
+            /* 60 minutes */
+        }
+
+        .second-hand {
+            width: 1px;
+            height: 10px;
+            top: 2px;
+            animation: rotateSecond 60s linear infinite;
+            /* 60 seconds */
+        }
+
+        /* Relógio estático (para dias não atuais) */
+        .clock-static {
+            color: #6B7280;
+            /* gray-400 */
+        }
+
+        /* Relógio animado (apenas para o dia atual) */
+        .clock-animated {
+            position: relative;
+            width: 20px;
+            height: 20px;
+        }
+
+        .clock-face-animated {
+            width: 100%;
+            height: 100%;
+            border: 2px solid #EF4444;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .clock-hand-animated {
+            position: absolute;
+            background-color: #EF4444;
+            transform-origin: bottom center;
+            border-radius: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .hour-hand-animated {
+            width: 2px;
+            height: 6px;
+            top: 5px;
+            animation: rotateHour 43200s linear infinite;
+        }
+
+        .minute-hand-animated {
+            width: 2px;
+            height: 8px;
+            top: 3px;
+            animation: rotateMinute 3600s linear infinite;
+        }
+
+        .second-hand-animated {
+            width: 1px;
+            height: 9px;
+            top: 1px;
+            animation: rotateSecond 60s linear infinite;
+        }
+
+        @keyframes rotateHour {
+            from {
+                transform: translateX(-50%) rotate(0deg);
+            }
+
+            to {
+                transform: translateX(-50%) rotate(360deg);
+            }
+        }
+
+        @keyframes rotateMinute {
+            from {
+                transform: translateX(-50%) rotate(0deg);
+            }
+
+            to {
+                transform: translateX(-50%) rotate(360deg);
+            }
+        }
+
+        @keyframes rotateSecond {
+            from {
+                transform: translateX(-50%) rotate(0deg);
+            }
+
+            to {
+                transform: translateX(-50%) rotate(360deg);
+            }
+        }
+
+        /* Current Day Highlight */
+        .current-day {
+            border-left-color: #EF4444 !important;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .current-day::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #EF4444, transparent);
+        }
+
+        .current-day:hover {
+            border-left-color: #EF4444 !important;
+            transform: none;
+        }
+
+        .current-day-title {
+            color: #EF4444 !important;
+            text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+        }
+
+        .current-day-badge {
+            background: #EF4444 !important;
+            color: white !important;
+        }
+
+        .current-day-text {
+            color: #f8f8f8 !important;
         }
     </style>
 </head>
-<body>
-    <nav class="glass-effect container mx-auto px-6 py-4 rounded-xl mt-4">
-        <div class="flex justify-between items-center">
-            <div class="text-2xl font-bold flex items-center">
-                <img src="mestre.gif" alt="Logo" class="h-8 mr-2" />
-                <span>MestreJinBruno</span>
+
+<body class="antialiased selection:bg-red-600 selection:text-white">
+
+    <div class="grid-bg"></div>
+    <div class="fixed inset-0 pointer-events-none z-[-1]"
+        style="background: radial-gradient(circle at center, transparent 0%, #000 100%);"></div>
+
+    <nav class="fixed w-full z-50 bg-black/90 border-b-2 border-red-600 backdrop-blur-md">
+        <div class="container mx-auto px-4 sm:px-6 h-16 sm:h-20 flex justify-between items-center">
+            <a href="#"
+                class="header-logo text-xl sm:text-2xl font-bold tracking-widest text-white italic glitch-hover">
+                MESTRE<span class="text-red-600">JINBRUNO</span>
+            </a>
+
+            <div class="hidden md:flex gap-8 lg:gap-10 text-lg lg:text-xl font-medium tracking-wide">
+                <a href="#home" class="nav-item text-white hover:text-red-500 transition-colors">Início</a>
+                <a href="#streams" class="nav-item text-gray-400 hover:text-red-500 transition-colors">Transmissões</a>
+                <a href="#schedule" class="nav-item text-gray-400 hover:text-red-500 transition-colors">Agenda</a>
+                <a href="lojinha.html" class="nav-item text-gray-400 hover:text-red-500 transition-colors">Loja</a>
+                <a href="setup.html" class="nav-item text-gray-400 hover:text-red-500 transition-colors">Setup</a>
+                <a href="#links" class="nav-item text-gray-400 hover:text-red-500 transition-colors">Links</a>
             </div>
-            <div class="hidden md:flex space-x-8">
-                <a href="#home" class="nav-link">Início</a>
-                <a href="#streams" class="nav-link">Transmissões</a>
-                <a href="lojinha.html" class="nav-link">Lojinha</a>
-                <a href="#schedule" class="nav-link">Agenda</a>
-                <a href="#links" class="nav-link">Links</a>
-                <a href="setup.html" class="nav-link font-bold text-purple-300">Meu Setup</a>
-            </div>
-            <button class="md:hidden focus:outline-none" id="menu-toggle">
-                <i class="fas fa-bars text-2xl"></i>
+
+            <a href="https://twitch.tv/mestrejinbruno" target="_blank"
+                class="hidden md:flex items-center gap-2 px-4 lg:px-6 py-2 bg-red-600 hover:bg-white hover:text-black text-white font-bold uppercase clip-path-btn transition-all duration-300 transform hover:skew-x-[-10deg] text-sm lg:text-base">
+                <span class="w-2 h-2 lg:w-3 lg:h-3 bg-white rounded-full animate-ping"></span>
+                AO VIVO
+            </a>
+
+            <button class="md:hidden text-2xl text-red-600"
+                onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i class="fas fa-bars"></i>
             </button>
         </div>
-        <div class="md:hidden hidden flex flex-col space-y-4 mt-4 glass-effect rounded-lg p-4" id="mobile-menu">
-            <a href="#home" class="nav-link">Início</a>
-            <a href="#streams" class="nav-link">Transmissões</a>
-            <a href="lojinha.html" class="nav-link">Lojinha</a>
-            <a href="#schedule" class="nav-link">Agenda</a>
-            <a href="#links" class="nav-link">Links</a>
-            <a href="setup.html" class="nav-link font-bold text-purple-300">Meu Setup</a>
+
+        <div id="mobile-menu"
+            class="hidden bg-black border-b border-red-600 p-4 flex flex-col gap-4 md:hidden text-center text-base">
+            <a href="#home" class="text-white font-bold py-2">INÍCIO</a>
+            <a href="#streams" class="text-gray-400 py-2">TRANSMISSÕES</a>
+            <a href="#schedule" class="text-gray-400 py-2">AGENDA</a>
+            <a href="lojinha.html" class="text-gray-400 py-2">LOJA</a>
+            <a href="setup.html" class="text-gray-400 py-2">SETUP</a>
+            <a href="#links" class="text-gray-400 py-2">LINKS</a>
         </div>
     </nav>
 
-    <section id="home" class="container mx-auto px-9 py-20 text-center">
-        <div class="glass-effect max-w-4xl mx-auto p-8 rounded-2xl">
-            <h1 class="text-4xl md:text-6xl font-bold mb-5">Seja muito bem-vindo(a)!</h1>
-            <div class="typing-container flex justify-center items-center mb-8">
-                <h2 class="text-xl md:text-3xl font-medium" id="typing-text"></h2>
+    <section id="home" class="min-h-screen flex items-center justify-center relative pt-16 sm:pt-20">
+        <div class="absolute inset-0 z-[-1] opacity-40">
+            <img src="2.png" class="w-full h-full object-cover grayscale">
+        </div>
+
+        <div class="container mx-auto px-4 sm:px-6 text-center z-10">
+            <div
+                class="mb-4 sm:mb-6 inline-block border border-red-600 bg-red-600/10 px-3 sm:px-4 py-1 rounded-none skew-x-[-10deg]">
+                <span
+                    class="text-red-500 font-bold tracking-[0.2em] text-1xl sm:text-2xl uppercase skew-x-[10deg] block">Bem-vindo
+                    à
+                    Resistência</span>
             </div>
-            <div class="flex justify-center space-x-4">
-                <a href="#streams" class="border-2 border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition duration-300">Assistir Agora</a>
-                <a href="lojinha.html" class="border-2 border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition duration-300">Acessar Lojinha</a>
+
+            <h1
+                class="hero-title text-3xl sm:text-3xl md:text-9xl font-bold mb-2 text-white leading-none tracking-tighter drop-shadow-lg">
+                MESTRE <br>
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-t from-red-600 to-red-400 text-glow-red">JINBRUNO</span>
+            </h1>
+
+            <div class="typing-container flex justify-center items-center mb-6 sm:mb-8">
+                <h2 class="hero-subtitle text-lg sm:text-xl md:text-3xl font-medium typing-text" id="typing-text"></h2>
+            </div>
+
+            <p
+                class="text-base sm:text-xl md:text-2xl text-gray-100 max-w-2xl mx-auto mb-8 sm:mb-10 font-light border-l-4 border-red-600 pl-4 text-left md:text-center md:border-l-0 md:pl-0">
+                Gameplay de alta performance, resenha sem filtro e a comunidade mais leal do cenário.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
+                <a href="#streams"
+                    class="px-6 sm:px-10 py-3 sm:py-4 bg-red-600 text-white font-bold text-lg sm:text-2xl uppercase tracking-widest hover:bg-white hover:text-red-600 transition-all clip-path-btn">
+                    Assistir
+                </a>
+                <a href="lojinha.html"
+                    class="px-6 sm:px-10 py-3 sm:py-4 border-2 border-white text-white font-bold text-lg sm:text-2xl uppercase tracking-widest hover:bg-white hover:text-black transition-all clip-path-btn">
+                    Lojinha
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="streams" class="container mx-auto px-6 py-8">
-        <div class="section-container">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Onde Transmito</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="platform-card glass-effect rounded-xl p-8 text-center">
-                    <div class="text-5xl mb-4 text-purple-400 floating">
-                        <i class="fab fa-twitch"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Twitch</h3>
-                    <p class="mb-6">Junte-se a mim para jogos ao vivo, sessões de Q&A e encontros da comunidade na Twitch!</p>
-                    <a href="https://twitch.tv/mestrejinbruno" target="_blank" class="bg-purple-600 px-6 py-2 rounded-full font-medium hover:bg-purple-700 transition duration-300">Assistir na Twitch</a>
-                </div>
-                
-                <div class="platform-card glass-effect rounded-xl p-8 text-center">
-                    <div class="text-5xl mb-4 text-green-400 floating">
-                        <i class="fa-brands fa-kickstarter"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Kick</h3>
-                    <p class="mb-6">Plataforma nova com conteúdo fresco e transmissões interativas. Venha conferir!</p>
-                    <a href="https://kick.com/mestrejinbruno" target="_blank" class="bg-green-600 px-6 py-2 rounded-full font-medium hover:bg-green-700 transition duration-300">Assistir na Kick</a>
-                </div>
-                
-                <div class="platform-card glass-effect rounded-xl p-8 text-center">
-                    <div class="text-5xl mb-4 text-red-400 floating">
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">YouTube</h3>
-                    <p class="mb-6">Transmissões ao vivo, vídeos e destaques disponíveis no meu canal do YouTube.</p>
-                    <a href="https://www.youtube.com/@MestreJinBruno?sub_confirmation=1" target="_blank" class="bg-red-600 px-6 py-2 rounded-full font-medium hover:bg-red-700 transition duration-300">Assistir no YouTube</a>
-                </div>
+    <section class="bg-red-600 py-4 sm:py-6 border-y-4 border-white">
+        <div
+            class="container mx-auto px-4 sm:px-6 flex flex-wrap justify-between items-center text-center gap-4 sm:gap-8 stats-section">
+            <div class="flex-1 min-w-[45%] sm:min-w-[150px]">
+                <h3 class="text-3xl sm:text-5xl font-bold text-white">5.9K+</h3>
+                <p class="text-black font-bold uppercase tracking-widest text-xs sm:text-sm">Seguidores</p>
+            </div>
+            <div class="w-px h-8 sm:h-12 bg-black/30 hidden sm:block"></div>
+            <div class="flex-1 min-w-[45%] sm:min-w-[150px]">
+                <h3 class="text-3xl sm:text-5xl font-bold text-white">Top 1%</h3>
+                <p class="text-black font-bold uppercase tracking-widest text-xs sm:text-sm">Rank Brasil</p>
+            </div>
+            <div class="w-px h-8 sm:h-12 bg-black/30 hidden sm:block"></div>
+            <div class="flex-1 min-w-[45%] sm:min-w-[150px]">
+                <h3 class="text-3xl sm:text-5xl font-bold text-white">441K+</h3>
+                <p class="text-black font-bold uppercase tracking-widest text-xs sm:text-sm">Visualizações</p>
+            </div>
+            <div class="w-px h-8 sm:h-12 bg-black/30 hidden sm:block"></div>
+            <div class="flex-1 min-w-[45%] sm:min-w-[150px]">
+                <h3 class="text-3xl sm:text-5xl font-bold text-white">5000+</h3>
+                <p class="text-black font-bold uppercase tracking-widest text-xs sm:text-sm">Horas de Live</p>
+            </div>
+        </div>
+    </section>
 
-                <div class="platform-card glass-effect rounded-xl p-8 text-center md:col-span-3 md:mx-auto max-w-md">
-                    <div class="text-5xl mb-4 text-red-400 floating">
-                        <i class="fab fa-youtube"></i>
+    <section id="streams" class="py-16 sm:py-24 bg-zinc-900 relative overflow-hidden">
+        <div
+            class="absolute -right-10 sm:-right-20 top-10 sm:top-20 text-[10rem] sm:text-[20rem] font-bold text-white opacity-[0.02] select-none pointer-events-none">
+            LIVE</div>
+
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl sm:text-5xl font-bold text-white mb-8 sm:mb-12 border-l-8 border-red-600 pl-4 sm:pl-6">
+                CANAIS DE TRANSMISSÃO</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                <a href="https://twitch.tv/mestrejinbruno" target="_blank"
+                    class="group relative block bg-black border border-gray-800 hover:border-purple-600 h-80 sm:h-96 transition-all duration-300 hover:-translate-y-2">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
+                    <img src="GeneralImages/logo.png"
+                        class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-opacity">
+
+                    <div class="absolute bottom-0 left-0 p-4 sm:p-8 z-20 w-full">
+                        <i
+                            class="fab fa-twitch text-4xl sm:text-5xl text-purple-500 mb-2 sm:mb-4 group-hover:text-white transition-colors"></i>
+                        <h3 class="text-2xl sm:text-4xl text-white font-bold mb-1 sm:mb-2">TWITCH</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm mb-2 sm:mb-4">Lives diárias, chat exclusivo e
+                            gameplay ao vivo.</p>
+                        <div class="w-full h-1 bg-gray-800 mt-2 sm:mt-4 group-hover:bg-purple-600 transition-colors">
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">YouTube - BallonFut</h3>
-                    <p class="mb-6">Canal extra com vídeos exclusivos de futebol.</p>
-                    <a href="https://www.youtube.com/@BallonFut?sub_confirmation=1" target="_blank"
-                    class="bg-red-600 px-6 py-2 rounded-full font-medium hover:bg-red-700 transition duration-300">
-                    Assistir no YouTube
-                    </a>
+                </a>
+
+                <a href="https://kick.com/mestrejinbruno" target="_blank"
+                    class="group relative block bg-black border border-gray-800 hover:border-green-500 h-80 sm:h-96 transition-all duration-300 hover:-translate-y-2">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
+                    <img src="GeneralImages/logokick.png"
+                        class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-opacity">
+
+                    <div class="absolute bottom-0 left-0 p-4 sm:p-8 z-20 w-full">
+                        <i
+                            class="fa-brands fa-kickstarter text-4xl sm:text-5xl text-green-500 mb-2 sm:mb-4 group-hover:text-white transition-colors"></i>
+                        <h3 class="text-2xl sm:text-4xl text-white font-bold mb-1 sm:mb-2">KICK</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm mb-2 sm:mb-4">Conteúdo sem filtro e alta bitrate.</p>
+                        <div class="w-full h-1 bg-gray-800 mt-2 sm:mt-4 group-hover:bg-green-500 transition-colors">
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://youtube.com/@MestreJinBruno" target="_blank"
+                    class="group relative block bg-black border border-gray-800 hover:border-red-600 h-80 sm:h-96 transition-all duration-300 hover:-translate-y-2">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
+                    <img src="GeneralImages/logokick.png"
+                        class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-opacity">
+
+                    <div class="absolute bottom-0 left-0 p-4 sm:p-8 z-20 w-full">
+                        <i
+                            class="fab fa-youtube text-4xl sm:text-5xl text-red-600 mb-2 sm:mb-4 group-hover:text-white transition-colors"></i>
+                        <h3 class="text-2xl sm:text-4xl text-white font-bold mb-1 sm:mb-2">YOUTUBE</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm mb-2 sm:mb-4">Melhores momentos, lives, vods e
+                            tutoriais.
+                        </p>
+                        <div class="w-full h-1 bg-gray-800 mt-2 sm:mt-4 group-hover:bg-red-600 transition-colors"></div>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/@BallonFut?sub_confirmation=1" target="_blank"
+                    class="group relative block bg-black border border-gray-800 hover:border-red-600 h-80 sm:h-96 transition-all duration-300 hover:-translate-y-2">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
+                    <img src="GeneralImages/logoballon.png"
+                        class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition-opacity">
+
+                    <div class="absolute bottom-0 left-0 p-4 sm:p-8 z-20 w-full">
+                        <i
+                            class="fab fa-youtube text-4xl sm:text-5xl text-red-600 mb-2 sm:mb-4 group-hover:text-white transition-colors"></i>
+                        <h3 class="text-2xl sm:text-4xl text-white font-bold mb-1 sm:mb-2">YOUTUBE - BALLONFUT</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm mb-2 sm:mb-4">Canal extra com vídeos exclusivos de
+                            futebol.</p>
+                        <div class="w-full h-1 bg-gray-800 mt-2 sm:mt-4 group-hover:bg-red-600 transition-colors"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule" class="py-12 sm:py-20 container mx-auto px-4 sm:px-6">
+        <h2 class="text-3xl sm:text-5xl font-bold text-center text-white mb-8 sm:mb-16">AGENDA DE <span
+                class="text-red-600">BATALHA</span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div class="bg-zinc-900 border-l-4 border-gray-600 p-4 sm:p-6 hover:border-red-600 transition-colors group"
+                data-day="1">
+                <h4 class="text-2xl sm:text-3xl text-white font-bold mb-1 sm:mb-2 group-hover:text-red-500">SEGUNDA</h4>
+                <div class="flex items-center gap-2 text-gray-400 mb-1 sm:mb-2">
+                    <i class="far fa-clock clock-static"></i>
+                    <span class="text-sm sm:text-base">15:00 - 17:00</span>
+                </div>
+                <span
+                    class="inline-block bg-gray-800 text-white px-2 sm:px-3 py-1 text-xs sm:text-sm font-bold uppercase">Edição
+                    de Vídeo</span>
+                <p class="text-gray-500 mt-2 sm:mt-3 text-xs sm:text-sm">Preparação de conteúdo para a semana, edição de
+                    clipes e highlights.</p>
+            </div>
+
+            <div class="bg-zinc-900 border-l-4 border-gray-600 p-4 sm:p-6 hover:border-red-600 transition-colors group"
+                data-day="2">
+                <h4 class="text-2xl sm:text-3xl text-white font-bold mb-1 sm:mb-2 group-hover:text-red-500">TERÇA</h4>
+                <div class="flex items-center gap-2 text-gray-400 mb-1 sm:mb-2">
+                    <i class="far fa-clock clock-static"></i>
+                    <span class="text-sm sm:text-base">15:00 - 17:00</span>
+                </div>
+                <span
+                    class="inline-block bg-gray-800 text-white px-2 sm:px-3 py-1 text-xs sm:text-sm font-bold uppercase">Ranked
+                    Tryhard</span>
+                <p class="text-gray-500 mt-2 sm:mt-3 text-xs sm:text-sm">Foco total no ranked, subindo elo e
+                    demonstrando estratégias avançadas.</p>
+            </div>
+
+            <div class="bg-zinc-900 border-l-4 border-gray-600 p-4 sm:p-6 hover:border-red-600 transition-colors group"
+                data-day="3">
+                <h4 class="text-2xl sm:text-3xl text-white font-bold mb-1 sm:mb-2 group-hover:text-red-500">QUARTA</h4>
+                <div class="flex items-center gap-2 text-gray-400 mb-1 sm:mb-2">
+                    <i class="far fa-clock clock-static"></i>
+                    <span class="text-sm sm:text-base">15:00 - 17:00</span>
+                </div>
+                <span
+                    class="inline-block bg-gray-800 text-white px-2 sm:px-3 py-1 text-xs sm:text-sm font-bold uppercase">Com
+                    a Comunidade</span>
+                <p class="text-gray-500 mt-2 sm:mt-3 text-xs sm:text-sm">Jogando com os viewers, desafios da comunidade
+                    e interação direta.</p>
+            </div>
+
+            <div class="bg-zinc-900 border-l-4 border-gray-600 p-4 sm:p-6 hover:border-red-600 transition-colors group"
+                data-day="4">
+                <h4 class="text-2xl sm:text-3xl text-white font-bold mb-1 sm:mb-2 group-hover:text-red-500">QUINTA</h4>
+                <div class="flex items-center gap-2 text-gray-400 mb-1 sm:mb-2">
+                    <i class="far fa-clock clock-static"></i>
+                    <span class="text-sm sm:text-base">15:00 - 17:00</span>
+                </div>
+                <span
+                    class="inline-block bg-gray-800 text-white px-2 sm:px-3 py-1 text-xs sm:text-sm font-bold uppercase">Jogando
+                    com Viewers</span>
+                <p class="text-gray-500 mt-2 sm:mt-3 text-xs sm:text-sm">Mais uma sessão de jogatina com a comunidade,
+                    desta vez focando em jogos cooperativos.</p>
+            </div>
+
+            <div class="bg-zinc-900 border-l-4 border-gray-600 p-4 sm:p-6 hover:border-red-600 transition-colors group"
+                data-day="5">
+                <h4 class="text-2xl sm:text-3xl text-white font-bold mb-1 sm:mb-2 group-hover:text-red-500">SEXTA</h4>
+                <div class="flex items-center gap-2 text-gray-400 mb-1 sm:mb-2">
+                    <i class="far fa-clock clock-static"></i>
+                    <span class="text-sm sm:text-base">15:00 - 17:00</span>
+                </div>
+                <span
+                    class="inline-block bg-gray-800 text-white px-2 sm:px-3 py-1 text-xs sm:text-sm font-bold uppercase">Jogando
+                    com Viewers</span>
+                <p class="text-gray-500 mt-2 sm:mt-3 text-xs sm:text-sm">Encerrando a semana com uma maratona de jogos
+                    variados junto da comunidade.</p>
+            </div>
+
+            <div class="bg-zinc-900 border-l-4 border-gray-600 p-4 sm:p-6 hover:border-red-600 transition-colors group"
+                data-day="6">
+                <h4 class="text-2xl sm:text-3xl text-white font-bold mb-1 sm:mb-2 group-hover:text-red-500">SÁBADO</h4>
+                <div class="flex items-center gap-2 text-gray-400 mb-1 sm:mb-2">
+                    <i class="far fa-clock clock-static"></i>
+                    <span class="text-sm sm:text-base">15:00 - 17:00</span>
+                </div>
+                <span
+                    class="inline-block bg-gray-800 text-white px-2 sm:px-3 py-1 text-xs sm:text-sm font-bold uppercase">Variados</span>
+                <p class="text-gray-500 mt-2 sm:mt-3 text-xs sm:text-sm">Sessão de jogos variados, testando novidades e
+                    jogos sugeridos pela comunidade.</p>
+            </div>
+        </div>
+
+        <div class="mt-8 sm:mt-10 text-center">
+            <p class="text-gray-500 uppercase tracking-widest text-xs sm:text-sm">Horário de Brasília (GMT-3)</p>
+            <div class="mt-4 text-center glass-effect rounded-lg py-3 sm:py-4 px-4 sm:px-6 max-w-sm mx-auto shadow-md">
+                <div class="flex items-center justify-center space-x-2 text-red-500 font-semibold text-lg sm:text-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2" />
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
+                    </svg>
+                    <span id="brasil-time"></span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="schedule" class="container mx-auto px-6 py-8">
-        <div class="section-container">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Agenda de Transmissões</h2>
-            <div class="max-w-3xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="glass-effect p-6 rounded-xl">
-                        <h3 class="day-title text-xl font-bold mb-4 text-center text-purple-300" data-color=#c084fc>Segunda Feira</h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-center">
-                                <span class="w-2 h-2 bg-purple-300 rounded-full mr-2"></span>
-                                <span>15:00 - 17:00</span>
-                            </li>
-                            <li class="text-sm opacity-80">Edição de Vídeo</li>
-                        </ul>
-                    </div>
+    <section id="sponsors" class="py-12 sm:py-16 bg-black">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl sm:text-5xl font-bold text-center text-white mb-8 sm:mb-12">PATROCINADORES OFICIAIS</h2>
+            <p class="text-center text-gray-300 max-w-2xl mx-auto mb-8 sm:mb-10 text-sm sm:text-base">
+                Um enorme obrigado aos nossos incríveis patrocinadores que apoiam este canal e tornam possível a criação
+                de conteúdo!
+            </p>
 
-                    <div class="glass-effect p-6 rounded-xl">
-                        <h3 class="day-title text-xl font-bold mb-4 text-center text-green-300" data-color=#86efac>Terça Feira</h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-center">
-                                <span class="w-2 h-2 bg-green-300 rounded-full mr-2"></span>
-                                <span>15:00 - 17:00</span>
-                            </li>
-                            <li class="text-sm opacity-80">Edição de Vídeo</li>
-                        </ul>
-                    </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+                <a href="https://streamer.livad.stream/?referrer=866002757" target="_blank"
+                    class="sponsor-card bg-zinc-900 border border-gray-800 p-4 sm:p-6 flex items-center justify-center hover:border-red-600 transition-all duration-300 h-24 sm:h-32">
+                    <img src="Sponsor/livad.png" alt="livad" class="max-h-12 sm:max-h-16 max-w-full object-contain">
+                </a>
 
-                    <div class="glass-effect p-6 rounded-xl">
-                        <h3 class="day-title text-xl font-bold mb-4 text-center text-red-600" data-color=#dc2626>Quarta Feira</h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-center">
-                                <span class="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
-                                <span>15:00 - 17:00</span>
-                            </li>
-                            <li class="text-sm opacity-80">Jogando com os Viewers</li>
-                        </ul>
-                    </div>
+                <a href="https://www.kaspersky.com.br/lp/special-offer-for-gamers?reseller=br_ecinflu-br_acq_ona_influ__onl_b2c_twitch_lnk_in-mestr_______f94257625ed0ba22"
+                    target="_blank"
+                    class="sponsor-card bg-zinc-900 border border-gray-800 p-4 sm:p-6 flex items-center justify-center hover:border-red-600 transition-all duration-300 h-24 sm:h-32">
+                    <img src="Sponsor/kp.png" alt="Kaspersky" class="max-h-12 sm:max-h-16 max-w-full object-contain">
+                </a>
 
-                    <div class="glass-effect p-6 rounded-xl">
-                        <h3 class="day-title text-xl font-bold mb-4 text-center text-yellow-300" data-color=#fde047>Quinta Feira</h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-center">
-                                <span class="w-2 h-2 bg-yellow-300 rounded-full mr-2"></span>
-                                <span>15:00 - 17:00</span>
-                            </li>
-                            <li class="text-sm opacity-80">Jogando com os Viewers</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="glass-effect p-6 rounded-xl">
-                        <h3 class="day-title text-xl font-bold mb-4 text-center text-blue-300" data-color=#93c5fd>Sexta Feira</h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-center">
-                                <span class="w-2 h-2 bg-blue-300 rounded-full mr-2"></span>
-                                <span>15:00 - 17:00</span>
-                            </li>
-                            <li class="text-sm opacity-80">Jogando com os Viewers</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="glass-effect p-6 rounded-xl">
-                        <h3 class="day-title text-xl font-bold mb-4 text-center text-orange-500" data-color=#f97316>Sábado</h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-center">
-                                <span class="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
-                                <span>15:00 - 17:00</span>
-                            </li>
-                            <li class="text-sm opacity-80">Variados</li>
-                        </ul>
-                    </div>
-                </div>
+                <a href="https://app.willbank.com.br/3u0P/pcyoqind" target="_blank"
+                    class="sponsor-card bg-zinc-900 border border-gray-800 p-4 sm:p-6 flex items-center justify-center hover:border-red-600 transition-all duration-300 h-24 sm:h-32">
+                    <img src="Sponsor/willbank.png" alt="WillBank"
+                        class="max-h-12 sm:max-h-16 max-w-full object-contain">
+                </a>
 
-                <div class="glass-effect p-6 rounded-xl mt-5">
-                    <h3 class="day-title text-xl font-bold mb-4 text-center text-white" data-color=#ffffff>Domingo</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-white rounded-full mr-2"></span>
-                            <span>00:00 - 00:00</span>
-                        </li>
-                        <li class="text-sm opacity-80">Dia de dormir</li>
-                    </ul>
-                </div>
-                
-                <div class="mt-8 text-center glass-effect rounded-lg py-4 px-6 max-w-sm mx-auto shadow-md">
-                    <p class="mb-1 text-sm italic text-gray-200">Todos os horários estão no horário de Brasília (GMT-3)</p>
-                    <div class="flex items-center justify-center space-x-2 text-purple-400 font-semibold text-xl">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2" />
-                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
-                        </svg>
-                        <span id="brasil-time"></span>
-                    </div>
-                </div>
+                <a href="https://www.snowdog.tec.br/" target="_blank"
+                    class="sponsor-card bg-zinc-900 border border-gray-800 p-4 sm:p-6 flex items-center justify-center hover:border-red-600 transition-all duration-300 h-24 sm:h-32">
+                    <img src="Sponsor/snowdog.png" alt="SnowDog" class="max-h-12 sm:max-h-16 max-w-full object-contain">
+                </a>
+
+                <a href="https://www.mercadolivre.com.br/social/mestrejinbruno?matt_word=mestrejinbruno&matt_tool=72646271&forceInApp=true&ref=BMUGHZNus%2BMqjG2yKp4ZY6Mic02u2lAgtef9jS58UHDdYcIIhNDFGyPaO7SR22UAWo%2BxXjMB3iEeeHB%2F5gFcA8c9xsvOa2nkhm63HAY5TwoU4Tab75IRPDhiYQj2cmhkOK7nRT8t4W9%2Boievt2kKAU69Cf4M1o4jSRL9AW29qWxf6aCpurEgYMVKZp7BaTB%2Bu0tIKos%3D"
+                    target="_blank"
+                    class="sponsor-card bg-zinc-900 border border-gray-800 p-4 sm:p-6 flex items-center justify-center hover:border-red-600 transition-all duration-300 h-24 sm:h-32">
+                    <img src="Sponsor/mlivre.png" alt="Mercado Livre"
+                        class="max-h-12 sm:max-h-16 max-w-full object-contain">
+                </a>
+
+                <a href="https://app.husky.io/onboarding/profile-type?ref=bc1c2ea5-b23f-429b-8b41-fc6e1b326ffd"
+                    target="_blank"
+                    class="sponsor-card bg-zinc-900 border border-gray-800 p-4 sm:p-6 flex items-center justify-center hover:border-red-600 transition-all duration-300 h-24 sm:h-32">
+                    <img src="Sponsor/creators.png" alt="Creators"
+                        class="max-h-12 sm:max-h-16 max-w-full object-contain">
+                </a>
+
+                <a href="https://www.exitlag.com/refer/10074679" target="_blank"
+                    class="sponsor-card bg-zinc-900 border border-gray-800 p-4 sm:p-6 flex items-center justify-center hover:border-red-600 transition-all duration-300 h-24 sm:h-32">
+                    <img src="Sponsor/exitlag.png" alt="ExitLag" class="max-h-12 sm:max-h-16 max-w-full object-contain">
+                </a>
+
+                <a href="https://mpago.li/2KVYAzz" target="_blank"
+                    class="sponsor-card bg-zinc-900 border border-gray-800 p-4 sm:p-6 flex items-center justify-center hover:border-red-600 transition-all duration-300 h-24 sm:h-32">
+                    <img src="Sponsor/mpago.png" alt="Mercado Pago"
+                        class="max-h-12 sm:max-h-16 max-w-full object-contain">
+                </a>
+
+                <a href="https://www.facebook.com/groups/379893602817325?locale=pt_BR" target="_blank"
+                    class="sponsor-card bg-zinc-900 border border-gray-800 p-4 sm:p-6 flex items-center justify-center hover:border-red-600 transition-all duration-300 h-24 sm:h-32">
+                    <img src="Sponsor/facebookgroup2.png" alt="GrupoFacebook"
+                        class="max-h-12 sm:max-h-16 max-w-full object-contain">
+                </a>
+            </div>
+
+            <div class="mt-8 sm:mt-10 text-center">
+                <p class="text-gray-400 italic text-sm sm:text-base">
+                    Quer se tornar um patrocinador? Entre em contato: josebruno189@live.com
+                </p>
             </div>
         </div>
     </section>
 
-    <section id="links" class="container mx-auto px-6 py-8">
-        <div class="section-container">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Conecte-se Comigo</h2>
-            <div class="max-w-2xl mx-auto glass-effect rounded-xl p-8">
-                <div class="flex justify-center flex-wrap gap-6 mb-8">
-                    <a href="https://x.com/MestreJinBruno" class="social-icon text-3xl text-blue-400 hover:text-blue-300">
+    <footer id="links" class="bg-black border-t-2 border-red-600 pt-12 sm:pt-20 pb-8 sm:pb-10">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-6 sm:mb-8 text-center">NÃO PERCA NADA
+            </h2>
+
+            <div class="max-w-2xl mx-auto glass-effect rounded-xl p-4 sm:p-8 mb-8 sm:mb-12">
+                <div class="flex justify-center flex-wrap gap-4 sm:gap-6 mb-6 sm:mb-8">
+                    <a href="https://x.com/MestreJinBruno" target="_blank"
+                        class="social-icon w-12 h-12 sm:w-16 sm:h-16 bg-zinc-900 flex items-center justify-center text-xl sm:text-3xl text-white hover:bg-blue-400 hover:text-white transition-all border border-gray-800 hover:border-white">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="https://chat.whatsapp.com/EwJrX2rp1fq39hlKcbztuN?mode=ac_t" class="social-icon text-3xl text-green-400 hover:text-green-400">
+                    <a href="https://chat.whatsapp.com/EwJrX2rp1fq39hlKcbztuN?mode=ac_t" target="_blank"
+                        class="social-icon w-12 h-12 sm:w-16 sm:h-16 bg-zinc-900 flex items-center justify-center text-xl sm:text-3xl text-white hover:bg-green-500 hover:text-white transition-all border border-gray-800 hover:border-white">
                         <i class="fab fa-whatsapp"></i>
                     </a>
-                    <a href="https://www.instagram.com/mestrejinbrunoficial/" class="social-icon text-3xl text-pink-500 hover:text-pink-300">
+                    <a href="https://www.instagram.com/mestrejinbrunoficial/" target="_blank"
+                        class="social-icon w-12 h-12 sm:w-16 sm:h-16 bg-zinc-900 flex items-center justify-center text-xl sm:text-3xl text-white hover:bg-pink-600 hover:text-white transition-all border border-gray-800 hover:border-white">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://www.facebook.com/jose.bruno.790/" class="social-icon text-3xl text-blue-600 hover:text-blue-500">
+                    <a href="https://www.facebook.com/jose.bruno.790/" target="_blank"
+                        class="social-icon w-12 h-12 sm:w-16 sm:h-16 bg-zinc-900 flex items-center justify-center text-xl sm:text-3xl text-white hover:bg-blue-600 hover:text-white transition-all border border-gray-800 hover:border-white">
                         <i class="fab fa-facebook"></i>
                     </a>
-                    <a href="https://discord.gg/guy7HVmNp8" class="social-icon text-3xl text-blue-500 hover:text-blue-600">
+                    <a href="https://discord.gg/guy7HVmNp8" target="_blank"
+                        class="social-icon w-12 h-12 sm:w-16 sm:h-16 bg-zinc-900 flex items-center justify-center text-xl sm:text-3xl text-white hover:bg-indigo-600 hover:text-white transition-all border border-gray-800 hover:border-white">
                         <i class="fab fa-discord"></i>
                     </a>
-                    <a href="https://www.tiktok.com/@mestrejinbruno" class="social-icon text-3xl text-black hover:text-gray-700">
+                    <a href="https://www.tiktok.com/@mestrejinbruno" target="_blank"
+                        class="social-icon w-12 h-12 sm:w-16 sm:h-16 bg-zinc-900 flex items-center justify-center text-xl sm:text-3xl text-white hover:bg-black hover:text-white transition-all border border-gray-800 hover:border-white">
                         <i class="fab fa-tiktok"></i>
                     </a>
-                    <a href="https://steamcommunity.com/id/Jinbruno/" class="social-icon text-3xl text-white-100 hover:text-blue-200">
+                    <a href="https://steamcommunity.com/id/Jinbruno/" target="_blank"
+                        class="social-icon w-12 h-12 sm:w-16 sm:h-16 bg-zinc-900 flex items-center justify-center text-xl sm:text-3xl text-white hover:bg-gray-800 hover:text-white transition-all border border-gray-800 hover:border-white">
                         <i class="fab fa-steam"></i>
                     </a>
                 </div>
-                
-                <div class="space-y-4">
-                    <div class="flex items-center glass-effect p-3 rounded-lg">
-                        <i class="fas fa-envelope text-xl mr-4 text-yellow-400"></i>
+
+                <div class="space-y-3 sm:space-y-4">
+                    <div class="flex items-center glass-effect p-2 sm:p-3 rounded-lg text-sm sm:text-base">
+                        <i class="fas fa-envelope text-lg sm:text-xl mr-3 sm:mr-4 text-yellow-400"></i>
                         <span>josebruno189@live.com</span>
                     </div>
-                    <div class="flex items-center glass-effect p-3 rounded-lg">
-                        <i class="fa-solid fa-mobile-screen-button text-xl mr-4 text-cyan-400"></i>
+                    <div class="flex items-center glass-effect p-2 sm:p-3 rounded-lg text-sm sm:text-base">
+                        <i class="fa-solid fa-mobile-screen-button text-lg sm:text-xl mr-3 sm:mr-4 text-cyan-400"></i>
                         <span>(11) 96920-0944</span>
                     </div>
-                    <div class="flex items-center glass-effect p-3 rounded-lg">
-                        <i class="fas fa-heart text-xl mr-4 text-red-400"></i>
-                        <span>Apoie-me via 
-                            <a href="https://livepix.gg/mestrejinbruno" target="_blank" rel="noopener noreferrer" class="hover:underline text-red-400">
+                    <div class="flex items-center glass-effect p-2 sm:p-3 rounded-lg text-sm sm:text-base">
+                        <i class="fas fa-heart text-lg sm:text-xl mr-3 sm:mr-4 text-red-400"></i>
+                        <span>Apoie-me via
+                            <a href="https://livepix.gg/mestrejinbruno" target="_blank" rel="noopener noreferrer"
+                                class="hover:underline text-red-400 ml-1">
                                 LivePix
                             </a>
                         </span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-<section id="sponsors" class="container mx-auto px-6 py-8">
-    <div class="section-container">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Nossos Patrocinadores</h2>
-        <p class="text-center text-gray-300 max-w-2xl mx-auto mb-10">
-            Um enorme obrigado aos nossos incríveis patrocinadores que apoiam este canal e tornam possível a criação de conteúdo!
-        </p>
-        
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            <a href="https://streamer.livad.stream/?referrer=866002757" target="_blank" class="sponsor-card">
-                <img src="Sponsor/livad.png" alt="livad" class="sponsor-img">
-            </a>
-            
-            <a href="https://www.kaspersky.com.br/lp/special-offer-for-gamers?reseller=br_ecinflu-br_acq_ona_influ__onl_b2c_twitch_lnk_in-mestr_______f94257625ed0ba22" target="_blank" class="sponsor-card">
-                <img src="Sponsor/kp.png" alt="Kaspersky" class="sponsor-img">
-            </a>
-            
-            <a href="https://app.willbank.com.br/3u0P/pcyoqind" target="_blank" class="sponsor-card">
-                <img src="Sponsor/willbank.png" alt="WillBank" class="sponsor-img">
-            </a>
-            
-            <a href="https://www.snowdog.tec.br/" target="_blank" class="sponsor-card">
-                <img src="Sponsor/snowdog.png" alt="SnowDog" class="sponsor-img">
-            </a>
-            
-            <a href="https://www.mercadolivre.com.br/social/mestrejinbruno?matt_word=mestrejinbruno&matt_tool=72646271&forceInApp=true&ref=BMUGHZNus%2BMqjG2yKp4ZY6Mic02u2lAgtef9jS58UHDdYcIIhNDFGyPaO7SR22UAWo%2BxXjMB3iEeeHB%2F5gFcA8c9xsvOa2nkhm63HAY5TwoU4Tab75IRPDhiYQj2cmhkOK7nRT8t4W9%2Boievt2kKAU69Cf4M1o4jSRL9AW29qWxf6aCpurEgYMVKZp7BaTB%2Bu0tIKos%3D" target="_blank" class="sponsor-card">
-                <img src="Sponsor/mlivre.png" alt="Mercado Livre" class="sponsor-img">
-            </a>
-
-            <a href="https://app.husky.io/onboarding/profile-type?ref=bc1c2ea5-b23f-429b-8b41-fc6e1b326ffd" target="_blank" class="sponsor-card">
-                <img src="Sponsor/creators.png" alt="Creators" class="sponsor-img">
-            </a>
-
-            <a href="https://www.exitlag.com/refer/10074679" target="_blank" class="sponsor-card">
-                <img src="Sponsor/exitlag.png" alt="ExitLag" class="sponsor-img">
-            </a>
-
-            <a href="https://mpago.li/2KVYAzz" target="_blank" class="sponsor-card">
-                <img src="Sponsor/mpago.png" alt="Mercado Pago" class="sponsor-img">
-            </a>
-
-            <a href="https://www.facebook.com/groups/379893602817325?locale=pt_BR" target="_blank" class="sponsor-card">
-                <img src="Sponsor/facebookgroup2.png" alt="GrupoFacebook" class="sponsor-img">
-            </a>
-        </div>
-        
-        <div class="mt-10 text-center">
-            <p class="text-gray-400 italic">
-                Quer se tornar um patrocinador? Entre em contato: josebruno189@live.com
-            </p>
-        </div>
-    </div>
-</section>
-    
-    <footer class="glass-effect py-9 mt-12">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2025-2026 MestreJinBruno. Todos os direitos reservados.</p>
-            <p class="text-sm mt-1 opacity-70">
-                Website developed by
-                <a href="https://github.com/SoldadoHumano"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hover:underline text-purple-400 particle-title"
-                data-color="#c084fc">
-                Vitor
-                </a>
-            </p>
+            <div
+                class="border-t border-gray-900 pt-6 sm:pt-10 text-gray-600 text-xs sm:text-sm flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-center sm:text-left">
+                    Copyright &copy; 2025-2026 MestreJinBruno.<br>
+                    <class="sm:hidden"> Todos os direitos reservados.
+                </p>
+                <p class="text-1xl text-center sm:text-right">
+                    Desenvolvido com 💖 por
+                    <a href="https://github.com/SoldadoHumano" target="_blank" rel="noopener noreferrer"
+                        class="hover:underline text-red-500" data-color="#EF4444">
+                        Vitor
+                    </a>
+                </p>
+            </div>
         </div>
     </footer>
 
     <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-toggle')?.addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         });
+
+        // Typing Animation
         const phrases = [
             "Jogos ao vivo todos os dias!",
             "Transmissões interativas com viewers",
@@ -494,12 +927,12 @@
             "Novo conteúdo em cada transmissão",
             "Vamos nos divertir juntos!"
         ];
-        
+
         let currentPhrase = 0;
         let currentLetter = 0;
         let isDeleting = false;
         let typingSpeed = 50;
-        
+
         function typeWriter() {
             const typingText = document.getElementById('typing-text');
             if (isDeleting) {
@@ -521,10 +954,11 @@
                 typingSpeed = 500;
                 typingText.classList.remove('typing-complete');
             }
-            
+
             setTimeout(typeWriter, typingSpeed);
         }
 
+        // Brazil Time
         function updateBrazilTime() {
             const now = new Date();
             const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
@@ -540,27 +974,109 @@
             document.getElementById('brasil-time').textContent = `${hours}:${minutes}:${seconds}`;
         }
 
+        // Update Current Day (switch static/animated clocks)
+        function updateCurrentDay() {
+            const daysOfWeek = ['DOMINGO', 'SEGUNDA', 'TERÇA', 'QUARTA', 'QUINTA', 'SEXTA', 'SÁBADO'];
+            const now = new Date();
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+            const brasilOffset = -3;
+            const brasilDate = new Date(utc + (3600000 * brasilOffset));
+
+            const currentDay = brasilDate.getDay(); // 0 = Domingo, 1 = Segunda, etc.
+
+            // Remove current day styling from all days and ensure they show the static clock
+            document.querySelectorAll('#schedule .bg-zinc-900').forEach(day => {
+                day.classList.remove('current-day', 'glow-red');
+                const title = day.querySelector('h4');
+                const badge = day.querySelector('span');
+                const text = day.querySelector('p');
+                const timeText = day.querySelector('.flex.items-center span');
+
+                // Remove animated clock if present and restore static icon
+                const clockContainer = day.querySelector('.flex.items-center');
+                if (clockContainer) {
+                    const animatedClock = clockContainer.querySelector('.clock-animated');
+                    if (animatedClock) animatedClock.remove();
+
+                    // Ensure a static icon exists
+                    let staticClock = clockContainer.querySelector('.clock-static');
+                    if (!staticClock) {
+                        staticClock = document.createElement('i');
+                        staticClock.className = 'far fa-clock clock-static';
+                        clockContainer.insertBefore(staticClock, clockContainer.firstChild);
+                    }
+                }
+
+                if (title) title.classList.remove('current-day-title');
+                if (badge) badge.classList.remove('current-day-badge');
+                if (text) text.classList.remove('current-day-text');
+                if (timeText) timeText.classList.remove('current-day-text');
+            });
+
+            // Add current day styling to the correct day and inject animated clock
+            const currentDayElement = document.querySelector(`[data-day="${currentDay}"]`);
+            if (currentDayElement) {
+                currentDayElement.classList.add('current-day', 'glow-red');
+                const title = currentDayElement.querySelector('h4');
+                const badge = currentDayElement.querySelector('span');
+                const text = currentDayElement.querySelector('p');
+                const timeText = currentDayElement.querySelector('.flex.items-center span');
+                const clockContainer = currentDayElement.querySelector('.flex.items-center');
+
+                // Replace static clock with animated one
+                if (clockContainer) {
+                    const staticClock = clockContainer.querySelector('.clock-static');
+                    if (staticClock) staticClock.remove();
+
+                    // Add animated clock
+                    const animatedClock = document.createElement('div');
+                    animatedClock.className = 'clock-animated';
+                    animatedClock.innerHTML = `
+                        <div class="clock-face-animated">
+                            <div class="clock-hand-animated hour-hand-animated"></div>
+                            <div class="clock-hand-animated minute-hand-animated"></div>
+                            <div class="clock-hand-animated second-hand-animated"></div>
+                        </div>
+                    `;
+                    clockContainer.insertBefore(animatedClock, clockContainer.firstChild);
+                }
+
+                if (title) {
+                    title.classList.add('current-day-title');
+                    title.textContent = `${daysOfWeek[currentDay]} (HOJE)`;
+                }
+                if (badge) badge.classList.add('current-day-badge');
+                if (text) text.classList.add('current-day-text');
+                if (timeText) timeText.classList.add('current-day-text');
+            }
+        }
+
+        // Add data-day attributes to schedule items
+        function initializeScheduleDays() {
+            const days = document.querySelectorAll('#schedule .bg-zinc-900');
+            const dayMap = {
+                'SEGUNDA': 1,
+                'TERÇA': 2,
+                'QUARTA': 3,
+                'QUINTA': 4,
+                'SEXTA': 5,
+                'SÁBADO': 6
+            };
+
+            days.forEach(day => {
+                const dayTitle = day.querySelector('h4').textContent.split(' ')[0];
+                if (dayMap[dayTitle]) {
+                    day.setAttribute('data-day', dayMap[dayTitle]);
+                }
+            });
+        }
+
+
+
         setInterval(updateBrazilTime, 1000);
         updateBrazilTime();
-        
-        document.querySelectorAll('.day-title').forEach(title => {
-            setInterval(() => {
-                const rect = title.getBoundingClientRect();
-                const particle = document.createElement('span');
-                particle.className = 'particle';
-                particle.style.background = title.dataset.color;
 
-                particle.style.left = (Math.random() * rect.width) + 'px';
-                particle.style.top = (Math.random() * rect.height) + 'px';
-
-                particle.style.setProperty('--x', (Math.random() - 0.5) * 50 + 'px');
-                particle.style.setProperty('--y', - (Math.random() * 50 + 20) + 'px');
-
-                title.appendChild(particle);
-                setTimeout(() => particle.remove(), 1000);
-            }, 150);
-        });
-
+        // Particle Animation
         document.querySelectorAll('.particle-title').forEach(el => {
             setInterval(() => {
                 const particle = document.createElement('span');
@@ -578,13 +1094,13 @@
             }, 200);
         });
 
+        // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(typeWriter, 1000);
+            initializeScheduleDays();
+            updateCurrentDay();
         });
     </script>
 </body>
 
 </html>
-
-
-
