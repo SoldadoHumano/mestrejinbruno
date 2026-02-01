@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MestreJinBruno</title>
+    <link rel="icon" type="image/png" href="GeneralImages/logo.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Teko:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #EF4444;
+            --dark: #0a0a0a;
+            --light: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: #e5e5e5;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .nav-item,
+        .card-title {
+            font-family: 'Teko', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .grid-bg {
+            background-image:
+                linear-gradient(rgba(20, 20, 20, 0.8) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(20, 20, 20, 0.8) 1px, transparent 1px);
+            background-size: 50px 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #EF4444;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #fff;
+        }
+
+        .glass-effect {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+        }
+
+        .clip-path-btn {
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+        }
+
+        .news-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.2);
+        }
+
+        .news-card img {
+            transition: transform 0.6s ease;
+        }
+
+        .news-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .img-overlay {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+
+        .news-card:hover .img-overlay {
+            opacity: 0.3;
+        }
+
+        .play-icon {
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .news-card:hover .play-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        #news-grid-container {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .glitch-hover:hover {
+            text-shadow: 2px 0 #fff, -2px 0 #EF4444;
+            animation: glitch 0.3s linear;
+        }
+
+        @keyframes glitch {
+            0% {
+                transform: translate(0);
+            }
+
+            20% {
+                transform: translate(-2px, 2px);
+            }
+
+            40% {
+                transform: translate(-2px, -2px);
+            }
+
+            60% {
+                transform: translate(2px, 2px);
+            }
+
+            80% {
+                transform: translate(2px, -2px);
+            }
+
+            100% {
+                transform: translate(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-red-600 selection:text-white">
+
+    <div class="grid-bg"></div>
+    <div class="fixed inset-0 pointer-events-none z-[-1]"
+        style="background: radial-gradient(circle at center, transparent 0%, #000 100%);"></div>
+
+    <nav class="fixed w-full z-50 bg-black/90 border-b-2 border-red-600 backdrop-blur-md">
+        <div class="container mx-auto px-4 sm:px-6 h-16 sm:h-20 flex justify-between items-center">
+            <a href="index.html"
+                class="header-logo text-xl sm:text-2xl font-bold tracking-widest text-white italic glitch-hover">
+                MESTRE<span class="text-red-600">JINBRUNO</span>
+            </a>
+
+            <div class="hidden md:flex gap-8 lg:gap-10 text-lg lg:text-xl font-medium tracking-wide">
+                <a href="index.html" class="nav-item text-gray-400 hover:text-red-500 transition-colors">Início</a>
+                <a href="#" class="nav-item text-white hover:text-red-500 transition-colors">Novidades</a>
+                <a href="index.html#streams"
+                    class="nav-item text-gray-400 hover:text-red-500 transition-colors">Transmissões</a>
+                <a href="index.html#schedule"
+                    class="nav-item text-gray-400 hover:text-red-500 transition-colors">Agenda</a>
+                <a href="lojinha.html" class="nav-item text-gray-400 hover:text-red-500 transition-colors">Loja</a>
+                <a href="setup.html" class="nav-item text-gray-400 hover:text-red-500 transition-colors">Setup</a>
+            </div>
+
+            <a href="https://twitch.tv/mestrejinbruno" target="_blank"
+                class="hidden md:flex items-center gap-2 px-4 lg:px-6 py-2 bg-red-600 hover:bg-white hover:text-black text-white font-bold uppercase clip-path-btn transition-all duration-300 transform hover:skew-x-[-10deg] text-sm lg:text-base">
+                <span class="w-2 h-2 lg:w-3 lg:h-3 bg-white rounded-full animate-ping"></span>
+                AO VIVO
+            </a>
+
+            <button class="md:hidden text-2xl text-red-600"
+                onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu"
+            class="hidden bg-black border-b border-red-600 p-4 flex flex-col gap-4 md:hidden text-center text-base">
+            <a href="index.html" class="text-gray-400 py-2">INÍCIO</a>
+            <a href="#" class="text-white font-bold py-2">NOVIDADES</a>
+            <a href="index.html#streams" class="text-gray-400 py-2">TRANSMISSÕES</a>
+            <a href="lojinha.html" class="text-gray-400 py-2">LOJA</a>
+            <a href="setup.html" class="text-gray-400 py-2">SETUP</a>
+        </div>
+    </nav>
+
+    <header class="pt-32 pb-10 sm:pt-40 sm:pb-16 text-center relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <h1 class="text-5xl sm:text-7xl md:text-8xl font-bold text-white mb-4">NOVIDADES</h1>
+            <p
+                class="text-gray-400 text-lg sm:text-xl max-w-2xl mx-auto border-l-4 border-red-600 pl-4 text-left md:text-center md:border-l-0 md:pl-0 font-light">
+                Confira os últimos vídeos, clips insanos e atualizações do canal!
+            </p>
+        </div>
+    </header>
+
+    <section class="pb-20">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div id="filter-wrapper" class="flex justify-center mb-10 gap-4 flex-wrap">
+                <button data-category="all"
+                    class="filter-btn px-6 py-2 bg-red-600 text-white font-bold uppercase clip-path-btn text-sm tracking-widest transition-all">Todos</button>
+                <button data-category="Sorteio"
+                    class="filter-btn px-6 py-2 bg-zinc-900 border border-gray-700 hover:border-red-600 text-gray-300 hover:text-white font-bold uppercase clip-path-btn text-sm tracking-widest transition-all">Sorteio</button>
+                <button data-category="Gameplay"
+                    class="filter-btn px-6 py-2 bg-zinc-900 border border-gray-700 hover:border-red-600 text-gray-300 hover:text-white font-bold uppercase clip-path-btn text-sm tracking-widest transition-all">Gameplay</button>
+                <button data-category="Review"
+                    class="filter-btn px-6 py-2 bg-zinc-900 border border-gray-700 hover:border-red-600 text-gray-300 hover:text-white font-bold uppercase clip-path-btn text-sm tracking-widest transition-all">Review</button>
+                <button data-category="React"
+                    class="filter-btn px-6 py-2 bg-zinc-900 border border-gray-700 hover:border-red-600 text-gray-300 hover:text-white font-bold uppercase clip-path-btn text-sm tracking-widest transition-all">React</button>
+            </div>
+
+            <div id="news-grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"></div>
+        </div>
+    </section>
+
+    <footer id="links" class="bg-black border-t-2 border-red-600 py-10 sm:py-16">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-gray-600 text-xs sm:text-sm flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-center sm:text-left">
+                    Copyright &copy; 2025-2026 MestreJinBruno.<br>
+                    <span class="copy">Todos os direitos reservados.</span>
+                </p>
+                <p class="text-1xl text-center sm:text-right">
+                    Developed with 💖 by
+                    <a href="https://github.com/SoldadoHumano" target="_blank" rel="noopener noreferrer"
+                        class="hover:underline text-red-500">Vitor</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * News data array
+         * Categories: Gameplay, Review, React, Tutorial, Sorteio
+         * TODO: Move this entire data array segment to a JSON file or another external file.
+         */
+        const newsData = [
+            {
+                id: 1,
+                title: "REVIEW DO MOUSE LOGITECH G304",
+                date: "05 MAI 2024",
+                description: "Review sincero do Logitech G304 (2026) + sorteio especial",
+                image: "news/video1.png",
+                link: "https://www.youtube.com/watch?v=_MQ6JWqhuOc",
+                category: ["Review", "Sorteio"]
+            },
+            {
+                id: 2,
+                title: "RTX 4070 EM 2026",
+                date: "15 MAR 2024",
+                description: "Comprei a RTX 4070 em 2026… Fiz besteira?",
+                image: "news/video2.png",
+                link: "https://www.youtube.com/watch?v=iCTwdsRj9UQ",
+                category: "Review"
+            },
+            {
+                id: 3,
+                title: "TESTE DO MONITOR TGT GAMER ST17G",
+                date: "14 JAN 2024",
+                description: "Testamos o Monitor TGT Gamer ST17G (17″ 75 Hz) — Vale a Pena em 2026?",
+                image: "news/video3.png",
+                link: "https://youtu.be/xftejbTAK6Q?si=qvykxEK-Yam5V0U5",
+                category: "Review"
+            },
+            {
+                id: 4,
+                title: "TESTE DO SUPERFRAME VISIONX",
+                date: "25 JAN 2026",
+                description: "SuperFrame VisionX O MONITOR MAIS RÁPIDO QUE JÁ USEI? 480Hz/4K 240Hz Dual Mode! VALE A PENA ?",
+                image: "news/video4.png",
+                link: "https://youtu.be/LfyqBigg1aE?si=fiiiu4gu_s_YQLwp",
+                category: "Review"
+            },
+            {
+                id: 5,
+                title: "CONTROLADORA RISE MODE VISION 01",
+                date: "03 JUL 2024",
+                description: "Unboxing COMPLETO da Mesa Controladora Rise Mode Vision 01 – Vale a pena em 2026?",
+                image: "news/video5.png",
+                link: "https://www.youtube.com/watch?v=kBd3L9CPvGg",
+                category: "Review"
+            },
+            {
+                id: 6,
+                title: "QUEM ESTÁ VENDO SUA LIVE?",
+                date: "31 AGO 2023",
+                description: "Quem está vendo sua live na Twitch? Descubra agora! 2026",
+                image: "news/video6.png",
+                link: "https://www.youtube.com/watch?v=OuAhjDgXiSA",
+                category: "Review"
+            },
+            {
+                id: 7,
+                title: "PROBLEMA GRAVE NO REDRAGON M711",
+                date: "23 SET 2022",
+                description: "Problema grave no Redragon M711 em 2026? Veja isso antes de Comprar !",
+                image: "news/video7.png",
+                link: "https://www.youtube.com/watch?v=9jXDz5ZdItY",
+                category: "Review"
+            },
+            {
+                id: 8,
+                title: "COMO TROCAR A CAPA DA LIVE NO PS4/PS5",
+                date: "30 ABR 2019",
+                description: "FINALMENTE! COMO TROCAR A CAPA DA LIVE NO PS4/PS5 PELO CELULAR",
+                image: "news/video8.png",
+                link: "https://www.youtube.com/watch?v=-akPuWHDFTQ",
+                category: "Review"
+            },
+            {
+                id: 9,
+                title: "COMO MUDAR O TEMA DO PS4/PS5 PELO CELULAR",
+                date: "21 SET 2019",
+                description: "COMO MUDAR O TEMA DO PS4/PS5 PELO CELULAR (TUTORIAL)",
+                image: "news/video9.png",
+                link: "https://www.youtube.com/watch?v=DXTD9820_84",
+                category: "Review"
+            },
+            {
+                id: 10,
+                title: "SORTEIO DO F1 2020 DELUXE EDITION",
+                date: "27 AGO 2021",
+                description: "SORTEIO DO CANAL (F1 2020 DELUXE SCHUMACHER EDITION) PS4",
+                image: "news/video10.png",
+                link: "https://www.youtube.com/watch?v=CbF9qLDNDJ8",
+                category: "Sorteio"
+            },
+            {
+                id: 11,
+                title: "SORTEIO DO AD INFINITUM",
+                date: "19 ABR 2025",
+                description: "SORTEIO EXCLUSIVO: Ganhe Ad Infinitum na Steam!",
+                image: "news/video11.png",
+                link: "https://www.youtube.com/watch?v=AL7paw9KcjY",
+                category: "Sorteio"
+            },
+            {
+                id: 12,
+                title: "COMO AGIR QUANDO A TWITCH TE IGNORA",
+                date: "28 DEZ 2022",
+                description: "COMO AGIR QUANDO A TWITCH IGNORA SEU TICKET 2026",
+                image: "news/video12.png",
+                link: "https://www.youtube.com/watch?v=PEGEeeFnU18",
+                category: "Review"
+            },
+            {
+                id: 13,
+                title: "A NOVA JORNADA!",
+                date: "05 ABR 2023",
+                description: "A NOVA JORNADA ! (A TWITCH ESCOLHEU APOIA E PROTEGE OS HACK) 2026",
+                image: "news/video13.png",
+                link: "https://www.youtube.com/watch?v=m03Jzvgrw4I",
+                category: "Review"
+            },
+            {
+                id: 14,
+                title: "MINHA CONTA DA TWITCH FOI HACKEADA",
+                date: "25 DEZ 2022",
+                description: "MINHA CONTA DA TWITCH FOI HACKEADA… SERÁ O FIM? 😰",
+                image: "news/video14.png",
+                link: "https://www.youtube.com/watch?v=m03Jzvgrw4I",
+                category: "Review"
+            },
+            {
+                id: 15,
+                title: "SORTEIO DO THE LAST OF US PARTE 2",
+                date: "23 JAN 2021",
+                description: "🎮 Quer jogar The Last of Us Parte 2? Então participa do sorteio! PS4",
+                image: "news/video15.png",
+                link: "https://www.youtube.com/watch?v=rNLD_JpEI6E",
+                category: "Sorteio"
+            },
+            {
+                id: 16,
+                title: "PEGUE TODOS DE GRAÇA",
+                date: "29 DEZ 2025",
+                description: "PEGUE TODOS DE GRAÇA- QUAL ESCOLHER ? FESTIVAL SEASON EFOOTBALL 2026",
+                image: "news/video16.png",
+                link: "https://www.youtube.com/watch?v=3sS97uZRENo",
+                category: "Gameplay"
+            },
+            {
+                id: 17,
+                title: "NÃO ERRE NA ESCOLHA DO SEU PRESENTE!",
+                date: "31 DEZ 2025",
+                description: "NÃO ERRE NA ESCOLHA DO SEU PRESENTE! 🔥 EFOOTBALL 2026 🔥TEM CARTA 104 🔥",
+                image: "news/video17.png",
+                link: "https://youtu.be/-WcOqOgM1Eo",
+                category: "Gameplay"
+            },
+            {
+                id: 18,
+                title: "COMO BUGA A JOGABILIDADE DO DEAN HUIJSEN",
+                date: "02 JAN 2026",
+                description: "COMO BUGA A JOGABILIDADE DO DEAN HUIJSEN😳 VALE TUDO ISSO ? EFOOTBALL 2026😳",
+                image: "news/video18.png",
+                link: "https://youtu.be/4__6BhFUgWQ",
+                category: "Gameplay"
+            },
+            {
+                id: 19,
+                title: "RANQUEADA NÃO PERDOA…",
+                date: "05 JAN 2026",
+                description: "RANQUEADA NÃO PERDOA…🔥 VINI 102 É SACANAGEM 😡 | eFootball 2026",
+                image: "news/video19.png",
+                link: "https://youtu.be/jYslLVmwgLY",
+                category: "Gameplay"
+            },
+            {
+                id: 20,
+                title: "A MELHOR FICHA DO XABI ALONSO",
+                date: "11 JAN 2026",
+                description: "A MELHOR FICHA DO XABI ALONSO O MAESTRO DO TIME 104 OVEL ?… VALE TUDO ISSO? 😱 | eFootball 2026",
+                image: "news/video20.png",
+                link: "https://youtu.be/Bcxj45CfQdk",
+                category: "Gameplay"
+            },
+        ];
+
+        /**
+         * Renders news cards with sorting logic (latest first)
+         */
+        function renderNews(data = newsData) {
+            const container = document.getElementById('news-grid-container');
+            container.style.opacity = '0';
+            container.style.transform = 'translateY(10px)';
+
+            // Month mapping for date conversion
+            const monthsMap = {
+                'JAN': 0, 'FEV': 1, 'MAR': 2, 'ABR': 3, 'MAI': 4, 'JUN': 5,
+                'JUL': 6, 'AGO': 7, 'SET': 8, 'OUT': 9, 'NOV': 10, 'DEZ': 11
+            };
+
+            // Sorting logic: latest dates first
+            const sortedData = [...data].sort((a, b) => {
+                const partsA = a.date.split(' ');
+                const partsB = b.date.split(' ');
+                const dateA = new Date(partsA[2], monthsMap[partsA[1]], partsA[0]);
+                const dateB = new Date(partsB[2], monthsMap[partsB[1]], partsB[0]);
+                return dateB - dateA;
+            });
+
+            setTimeout(() => {
+                let htmlContent = '';
+
+                if (sortedData.length === 0) {
+                    htmlContent = `
+                        <div class="col-span-full py-20 text-center flex flex-col items-center">
+                            <div class="relative mb-6">
+                                <i class="fas fa-exclamation-triangle text-6xl text-red-600 animate-bounce"></i>
+                                <i class="fas fa-ghost absolute -top-2 -right-4 text-2xl text-white/20"></i>
+                            </div>
+                            <h3 class="text-4xl font-bold text-white mb-4 card-title tracking-tighter">Ué, cadê o conteúdo?</h3>
+                            <p class="text-gray-400 text-lg max-w-lg mx-auto font-light leading-relaxed">
+                                Parece que o conteúdo tomou um <span class="text-red-500 font-bold italic">One Tap</span> ou o MestreJinBruno ficou <span class="text-red-500 font-mono italic">AFK</span> na base. 
+                                <br><br>
+                                <span class="text-sm bg-zinc-900 px-4 py-2 border border-dashed border-gray-700 rounded-lg">
+                                    Status: <span class="text-yellow-500">404 motivos pra voltar.</span>
+                                </span>
+                            </p>
+                            <button onclick="location.reload()" class="mt-8 text-xs text-gray-600 hover:text-red-500 transition-colors uppercase tracking-[0.2em]">
+                                Pressionar F5 para tentar dar um respawn
+                            </button>
+                        </div>
+                    `;
+                } else {
+                    // Substitua o bloco de conteúdo dentro do seu loop por este:
+                    sortedData.forEach(item => {
+                        const categories = Array.isArray(item.category) ? item.category : [item.category];
+
+                        htmlContent += `
+                            <article class="news-card glass-effect border border-gray-800 rounded-xl flex flex-col h-full group">
+                                <a href="${item.link}" target="_blank" class="relative block w-full aspect-video overflow-hidden rounded-t-xl cursor-pointer">
+                                    <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/640x360?text=Thumbnail+Not+Found'">
+                                    <div class="absolute inset-0 img-overlay"></div>
+                                    
+                                    <div class="absolute top-3 right-3 flex flex-wrap justify-end gap-1.5 z-20">
+                                        ${categories.map(cat => `
+                                            <span class="bg-red-600 text-white text-[10px] font-black px-2 py-1 uppercase tracking-tighter rounded-sm shadow-lg border border-red-500/50">
+                                                ${cat}
+                                            </span>
+                                        `).join('')}
+                                    </div>
+
+                                    <div class="absolute inset-0 flex items-center justify-center z-30 play-icon">
+                                        <div class="w-14 h-14 bg-red-600/90 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(239,68,68,0.6)] backdrop-blur-sm border-2 border-white/50">
+                                            <i class="fas fa-play text-white text-lg pl-1"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <div class="flex items-center gap-2 text-gray-500 text-[11px] font-bold mb-3 tracking-widest">
+                                        <i class="far fa-calendar-alt text-red-500"></i>
+                                        <span>${item.date}</span>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-white mb-3 leading-tight group-hover:text-red-500 transition-colors card-title">
+                                        <a href="${item.link}" target="_blank">${item.title}</a>
+                                    </h3>
+                                    
+                                    <div class="flex-grow mb-6">
+                                        <p class="text-gray-400 text-sm leading-relaxed font-light border-l-2 border-red-600/40 pl-4" style="max-height: 80px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+                                            ${item.description}
+                                        </p>
+                                    </div>
+
+                                    <a href="${item.link}" target="_blank" class="mt-auto w-full block text-center bg-transparent border border-white/10 hover:border-red-600 hover:bg-red-600 text-white font-bold py-3 uppercase tracking-widest text-xs transition-all duration-500 clip-path-btn">
+                                        SAIBA MAIS <i class="fas fa-arrow-right ml-2 text-[10px]"></i>
+                                    </a>
+                                </div>
+                            </article>
+                        `;
+                    });
+                }
+
+                container.innerHTML = htmlContent;
+                container.style.opacity = '1';
+                container.style.transform = 'translateY(0)';
+            }, 300);
+        }
+
+        /**
+         * Sets up filter button click events
+         */
+        function setupFilters() {
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const category = btn.getAttribute('data-category');
+
+                    buttons.forEach(b => {
+                        b.classList.remove('bg-red-600', 'text-white');
+                        b.classList.add('bg-zinc-900', 'text-gray-300', 'border-gray-700');
+                    });
+                    btn.classList.add('bg-red-600', 'text-white');
+                    btn.classList.remove('bg-zinc-900', 'text-gray-300', 'border-gray-700');
+
+                    if (category === 'all') {
+                        renderNews(newsData);
+                    } else {
+                        const filtered = newsData.filter(item => {
+                            const itemCats = Array.isArray(item.category) ? item.category : [item.category];
+                            return itemCats.some(cat => cat.toLowerCase() === category.toLowerCase());
+                        });
+                        renderNews(filtered);
+                    }
+                });
+            });
+        }
+
+        // Initialize script on DOM ready
+        document.addEventListener('DOMContentLoaded', () => {
+            renderNews();
+            setupFilters();
+        });
+    </script>
+</body>
+
+</html>
